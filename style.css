@@ -1,0 +1,30 @@
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  min-height: 100vh;
+  background-color: green;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  align-items: center;
+  justify-items: center;
+}
+
+h1 {
+  grid-column: 1/-1;
+  text-align: center;
+}
+.dayBox {
+  aspect-ratio: 4/5;
+  width: 7vw;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
