@@ -1,0 +1,37 @@
+*, ::before, ::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+}
+
+.flex, .huit .border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.case8{
+    width: 12.5rem;
+    height: 12.5rem;
+    background-color: aqua;
+    border: 2px solid black;
+    margin: 50px;
+}
+.huit{
+    font-size: 10rem;
+    text-align: center;
+}
+
+.border{
+    width: 12.5rem;
+    height: 12.5rem;
+    border: 1px solid black;
+    position: absolute;
+    z-index: -1;
+    background-color: rgb(21, 21, 21)
+}
