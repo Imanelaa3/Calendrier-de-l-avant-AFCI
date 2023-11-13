@@ -10,12 +10,39 @@ import Imane from "./imane.js";
 
 
 
+
 //----------------B1------------------
 
 const buttons = document.querySelectorAll('button')
 const baliseAnim = document.querySelector('balise-animation')
 const currentDate = new Date()
-
+const listImport = 
+{
+    1:"./ImaneAnim.js",
+    2:"",
+    3:"",
+    4:"",
+    5:"",
+    6:"",
+    7:"",
+    8:"",
+    9:"",
+    10:"",
+    11:"",
+    12:"",
+    13:"",
+    14:"",
+    15:"",
+    16:"",
+    17:"",
+    18:"",
+    19:"",
+    20:"",
+    21:"",
+    22:"",
+    13:"",
+    24:"",
+}
 
 
 
@@ -26,11 +53,18 @@ buttons.forEach(button => {
     const allowedDate = new Date (2023,10,day)
 
     if (currentDate >= allowedDate) {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', async () => {
             if (baliseAnim.style.display === "none" || baliseAnim.style.display === "") {
+                
+                const import1 = await import(listImport[day])
+                console.log(import1);
+                const anim = new import1.default()
+                baliseAnim.append(anim.canvas);
                 baliseAnim.style.display = "block";
                 console.log('ok');
             }
+            
+            
             
             //TODO function import
             
