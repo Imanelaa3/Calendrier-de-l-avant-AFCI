@@ -157,13 +157,18 @@ class Boundary {
 
 // à chaque fois que je vais boucler sur les tiret, je veux générer un nouveau carré et dans ' ' nous disons que nous voulons juste un espace, cela va créer notre périmètre de jeu
 const map = [
-    ['-','-','-','-','-','-',],
-    ['-',' ',' ',' ',' ','-',],
-    ['-',' ','-','-',' ','-',],
-    ['-',' ',' ',' ',' ','-',],
-    ['-','-','-','-','-','-',]
+    ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-',],
+    ['-',' ',' ','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-',],
+    ['-','-',' ',' ',' ',' ',' ','-','-','-','-','-','-','-','-','-','-','-',],
+    ['-','-','-','-','-','-',' ',' ',' ','-','-','-','-',' ',' ',' ',' ','-',],
+    ['-','-',' ',' ',' ','-','-','-',' ','-','-','-',' ',' ','-','-',' ',' ',],
+    ['-','-',' ','-',' ','-','-','-',' ','-',' ',' ',' ','-','-','-','-','-',],
+    ['-','-',' ','-',' ',' ',' ',' ',' ','-',' ','-','-','-','-','-','-','-',],
+    ['-','-',' ','-','-','-','-','-','-',' ',' ','-','-','-','-','-','-','-',],
+    ['-','-',' ',' ',' ',' ',' ',' ',' ',' ','-','-','-','-','-','-','-','-',],
+    ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-',],
 ]
-const boundaries = [
+const boundaries = [];
     // première solution, créer des carrés afin de faire le contour de notre jeu mais nous devrions effectuer énormément de code car nous devons changer la position x à chaque carrée, nous allons utiliser map
     // new Boundary({
     //     position: {
@@ -177,7 +182,6 @@ const boundaries = [
     //         y:0
     //     }
     // })
-]
 
 //Création de notre boucle
 // row pour représenté notre première ligne
@@ -231,23 +235,11 @@ class Player {
         };
     }
 }
-// mouvement Player 
-// const img = new Image();
-// img.src = "./img/pereNoel.jpg"
-// img.style.border = "1px solid black"
-// img.onload = () =>{
-//     context.save()
-//     cercle(30, 30, 20, 0)
-//     context.clip()
-//     context.drawImage(img, 9, 10, 40, 40)
-//     context.restore
-// }
-
 
 const player = new Player({
     position: {
-        x: 40,
-        y: 40
+        x: Boundary.width + Boundary.width/2,
+        y: Boundary.height + Boundary.height/2,
     },
     velocity: {
         x:0,
@@ -255,3 +247,37 @@ const player = new Player({
     }
 })
 player.cercle()
+
+// Mouvement de mon player
+document.addEventListener('keydown', handleKeyDown);
+// Function to handle keydown events
+function handleKeyDown(event) {
+    const speed = 10; // Adjust the speed as needed
+
+    switch (event.key) {
+        case 'ArrowUp':
+            player.position.y -= speed;
+            break;
+        case 'ArrowDown':
+            player.position.y += speed;
+            break;
+        case 'ArrowLeft':
+            player.position.x -= speed;
+            break;
+        case 'ArrowRight':
+            player.position.x += speed;
+            break;
+        default:
+            break;
+    }
+
+    // Clear the canvas and redraw everything
+    clearCanvas();
+    boundaries.forEach(boundary => boundary.draw());
+    player.cercle();
+    
+function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+}
+
