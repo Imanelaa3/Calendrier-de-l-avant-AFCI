@@ -1,5 +1,6 @@
 "use strict"
 
+
 export default class Imane extends HTMLElement
  {
     constructor() {
@@ -7,9 +8,9 @@ export default class Imane extends HTMLElement
         super()
         this.style.border="5px dotted green"
         this.style.borderRadius = "10px"
-        this.style.width = "95%"
+        this.style.width = "99%"
         this.style.minWidth = "100px"
-        this.style.height = "100%"
+        this.style.height = "98%"
         this.style.minHeight = "200px"
         this.style.backgroundColor = "white"
         this.style.position ="absolute"
@@ -19,14 +20,16 @@ export default class Imane extends HTMLElement
         this.style.display = "none"
 
         
-        this.btn = document.createElement('button')
-        this.btn.textContent = "X"
+        this.btn = document.createElement('input')
+        this.btn.setAttribute("type", "button")
+        this.btn.setAttribute("value", "X")
+        
         this.append(this.btn)
        
 
         const btnStyle = this.btn.style
         btnStyle.width = "30px"
-        btnStyle.height = "30px"
+        btnStyle.height = "20px"
         btnStyle.position ="absolute"
         btnStyle.top = "5px"
         btnStyle.right = "5px"
@@ -39,8 +42,9 @@ export default class Imane extends HTMLElement
 
     AnimBack()
     {
-        if(this.style.display === "")
+        if(this.style.display === "block")
             this.style.display = "none"
+            console.log('oui');
     }
 }
 
