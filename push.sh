@@ -6,7 +6,7 @@ else
   message="no comment"
 fi
 
-git add .
+git add --all
 git commit -m "$message"
 git push
 clear
