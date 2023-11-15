@@ -103,6 +103,11 @@ modale
     color: white;
 }
 .containerGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3em;
     height: 80vh;
     width: 80vw;
     border: 1px solid red;

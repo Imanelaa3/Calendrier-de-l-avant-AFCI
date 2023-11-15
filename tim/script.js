@@ -198,6 +198,7 @@ restartBtn.addEventListener("click", function () {
         if (temps === 0) {
             clearInterval(interval)
             containerShoot.textContent = "The End"
+            
         }
     }, 500) // Définir le délai à 500 millisecondes (0,5 seconde) pour une apparition plus fréquente
 })
