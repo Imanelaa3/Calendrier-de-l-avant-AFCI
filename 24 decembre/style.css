@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #282c34;
+}
+
+.background-gif {
+    margin: 0;
+    overflow: hidden;
+    background-image: url('/gif.gif');
+    background-size:100% 150%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1{
+    text-align: center;
+    color:white;
+}
+.word {
+    font-size: 2em;
+    margin: 0 10px;
+    opacity: 0;
+    color: gold;
+    animation: fadeInUp 2s forwards, sparkle 0.5s infinite alternate;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sparkle {
+    to {
+        filter: brightness(1.2);
+    }
+}
