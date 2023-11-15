@@ -80,3 +80,47 @@ modale
     cursor: pointer;
     background: rgb(240, 8, 8);
 }
+
+/*  Jeu  */
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gameInfo {
+   margin: 20px;
+}
+.gameInfo span {
+    margin: 50px;
+    font-size: 1.2em;
+}
+.startRestart {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: green;
+    cursor: pointer;
+    color: white;
+}
+.containerGame {
+    height: 80vh;
+    width: 80vw;
+    border: 1px solid red;
+    position: relative;
+    cursor: crosshair;
+    padding: 10px;
+    box-shadow: 2px 2px 5px black;
+    overflow: hidden;
+}
+#cible {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    transition: 0.3s;
+    animation: cible 30s infinite;
+}
+@keyframes cible {
+    to {
+        transform: translateY(-200px) rotate(90deg);
+    }
+}
