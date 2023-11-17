@@ -1,12 +1,194 @@
 "use strict";
-/* 
+/*
+==============================
+Styles
+==============================
+*/
+const styles = `
+    *, ::before, ::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Case calendrier */
+    .button {
+        position: relative;
+        background: white;
+        width: 200px;
+        height: 284px;
+        margin: 30px;
+        cursor: pointer;
+    }
+
+    .number {
+        position: relative;
+        font-size: 2.5em;
+        top: 35px;
+        left: 1px;
+        color: red;
+        z-index: 10;
+    }
+
+    .left,
+    .right {
+        position: absolute;
+        background-color: red;
+        width: 50%;
+        height: 100%;
+        top: 0;
+        z-index: 5;
+    }
+
+    .left {
+        left: 0;
+    }
+
+    .left div {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .right {
+        right: 0;
+    }
+
+    /* Modale */
+    .modal-container {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: hidden;
+        display: none;
+    }
+
+    .modal-container.active {
+        display: block;
+    }
+
+    .modal {
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        background-color: white;
+    }
+
+    .close-modal {
+        padding: 5px 5px;
+        color: white;
+        border: none;
+        border-radius: 0.3em;
+        font-size: 18px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        background: rgb(240, 8, 8);
+    }
+
+    /* Jeu */
+    .game {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .gameInfo {
+        display: flex;
+        gap: 100px;
+    }
+
+    .gameInfo span {
+        font-size: 1em;
+    }
+
+    .containerGame {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 3em;
+        height: 80vh;
+        width: 90vw;
+        border: 1px solid red;
+        position: relative;
+        cursor: crosshair;
+        padding: 10px;
+        box-shadow: 2px 2px 5px black;
+        overflow: hidden;
+        background: url(./img/fondNoel2.jpg) bottom no-repeat;
+    }
+
+    .settingsContainer {
+        margin-top: 20px;
+        display: flex;
+        gap: 150px;
+    }
+
+    .rules {
+        font-size: 1.2em;
+        color: red;
+        text-align: center;
+    }
+
+    .startRestart,
+    .stopMusic {
+        align-self: flex-end;
+        padding: 10px 20px;
+        background-color: green;
+        border-radius: 1em;
+        cursor: pointer;
+        color: white;
+    }
+
+    #cible,
+    #pereNoel {
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        transition: 0.3s;
+        animation: cible 30s infinite;
+    }
+
+    @keyframes cible {
+        to {
+            transform: translateY(-200px) rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width:650px) {
+        .settingsContainer {
+            gap: 10px;
+        }
+
+        .startRestart,
+        .stopMusic {
+            font-size: 0.8em;
+            padding: 5px;
+        }
+
+        .rules {
+            font-size: 1em;
+        }
+    }
+`;
+
+/*
 ==============================
 Création de toutes mes parties 
 ==============================
 */
-
-const body = document.querySelector("body")
+const body = document.querySelector("body");
 body.style.height = "100vh";
+
+// Injecter le style
+const styleElement = document.createElement("style");
+styleElement.innerHTML = styles;
+body.append(styleElement);
 
 // Création modale
 const modalContainer = document.createElement('div')
@@ -89,7 +271,7 @@ function animation1() {
         containerModal.classList.add("active");
     }, 9000)
 }
-
+const backgroundMusic = document.getElementById('backgroundMusic');
 // event de déclenchement de mon button et des portes
 buttonCase.addEventListener("click", () => {
     animation1()
@@ -99,7 +281,14 @@ buttonCase.addEventListener("click", () => {
         rightHalf.style.transition = "transform 5s 5s ease";
         leftHalf.style.transform = "translateX(-70%)";
         rightHalf.style.transform = "translateX(70%)";
+
+        // temps pour ajuster la transition de la musique avec les portes
+         setTimeout(() => {
+            // jouer la musique
+             backgroundMusic.play();
+         }, 8000);
     }
+        // Start playing background music when the transition ends
 });
 
 // Retirer ma modal
@@ -107,6 +296,8 @@ buttonCase.addEventListener("click", () => {
 modalButton.addEventListener("click", ()=> {
     containerModal.classList.remove("active")
     buttonCase.style.display = "block"
+
+    backgroundMusic.pause();
 })
 
 /* 
@@ -114,15 +305,11 @@ modalButton.addEventListener("click", ()=> {
     Création Jeu
 ======================
 */
+
 // Création des éléments Html 
 const game = document.createElement('div')
 game.className = "game"
 modalContainer.append(game)
-
-const startRestart = document.createElement('button')
-startRestart.className = "startRestart"
-startRestart.textContent = "Begin or restart"
-game.append(startRestart)
 
 const gameInfo = document.createElement('div')
 gameInfo.className = "gameInfo"
@@ -143,8 +330,44 @@ const containerGame = document.createElement('div')
 containerGame.className = "containerGame"
 game.append(containerGame)
 
-// Sélection de mes éléments Html 
+const settingsContainer = document.createElement('div')
+settingsContainer.className = "settingsContainer"
+game.append(settingsContainer)
 
+
+const startRestart = document.createElement('button')
+startRestart.className = "startRestart"
+startRestart.textContent = "Begin or restart"
+settingsContainer.append(startRestart)
+
+const rules = document.createElement('h1');
+rules.className = "rules"
+rules.textContent = "Shoot as many Christmas gift as you can, but take care not to shoot Santa Claus"
+settingsContainer.append(rules)
+
+// Création d'un bouton permettant d'arrêter la musique
+const stopMusic = document.createElement('button')
+stopMusic.className = 'stopMusic'
+stopMusic.textContent = 'stop music'
+settingsContainer.append(stopMusic)
+
+
+// Création de l'event stopMusic
+
+stopMusic.addEventListener('click', () => {
+    if (backgroundMusic.paused) {
+        // If the music is paused, play it
+        stopMusic.textContent = 'stop music'
+        backgroundMusic.play();
+    } else {
+        // If the music is playing, pause it
+        stopMusic.textContent = 'play Music'
+        backgroundMusic.pause();
+    }
+});
+
+
+// Sélection de mes éléments Html 
 let theScore = document.querySelector('.score')
 let leTemps = document.querySelector('.temps')
 let containerShoot = document.querySelector('.containerGame')
