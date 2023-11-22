@@ -134,7 +134,9 @@ const styles = /* CSS */ `
         color: red;
         text-align: center;
     }
-
+    #gameDurationInput {
+        width: 60px
+    }
     .startRestart,
     .stopMusic {
         align-self: flex-end;
@@ -161,7 +163,12 @@ const styles = /* CSS */ `
         }
     }
 
-    @media screen and (max-width:650px) {
+    @media screen and (max-width:630px) {
+        .gameInfo {
+            gap: 50px; 
+        }
+        }
+    @media screen and (max-width:830px) {
         .settingsContainer {
             gap: 10px;
         }
@@ -251,13 +258,13 @@ let isAnimating = false;
 
 // animation nombre
 function animation1() {
-    // Premier changement de transformation au bout de 1000 ms
+    // Premier changement de transformation au bout de 0 ms
     setTimeout(() => {
         number.style.transition = "scale 1s linear";
         number.style.scale= "1 -0.029";
     }, 0);
 
-    // Deuxième changement de transformation au bout de 3000 ms
+    // Deuxième changement de transformation au bout de 2000 ms
     setTimeout(() => {
         number.style.transition = "rotate 2s linear"
         number.style.rotate = "90deg";
@@ -268,7 +275,7 @@ function animation1() {
     setTimeout(()=>{
         // Cacher le bouton
         buttonCase.style.display = "none";
-        // Activer la modal
+        // appararition de la modal au bout de 9000 ms
         containerModal.classList.add("active");
     }, 9000)
 }
@@ -283,7 +290,7 @@ buttonCase.addEventListener("click", () => {
         leftHalf.style.transform = "translateX(-70%)";
         rightHalf.style.transform = "translateX(70%)";
 
-        // temps pour ajuster la transition de la musique avec les portes
+        // 8000 ms: temps pour ajuster la transition de la musique avec les portes
          setTimeout(() => {
             // jouer la musique
              backgroundMusic.play();
@@ -324,7 +331,7 @@ gameInfo.append(score)
 
 const temps = document.createElement('span')
 temps.className = "temps"
-temps.textContent = "time : 0"
+temps.textContent = "time : "
 gameInfo.append(temps)
 
 const containerGame = document.createElement('div')
@@ -357,11 +364,11 @@ settingsContainer.append(stopMusic)
 
 stopMusic.addEventListener('click', () => {
     if (backgroundMusic.paused) {
-        // If the music is paused, play it
+        // Si on met la musique est en pause, on appuye sur le bouton pour la jouer
         stopMusic.textContent = 'stop music'
         backgroundMusic.play();
     } else {
-        // If the music is playing, pause it
+        // Si la musique est en train d'être jouer, la mettre en pause
         stopMusic.textContent = 'play Music'
         backgroundMusic.pause();
     }
@@ -386,6 +393,7 @@ gameDurationInput.min = "1";
 gameDurationInput.value = "30";
 
 inputContainer.append(label, gameDurationInput);
+// je met dans gameInfo l'input que je viens de créer
 document.querySelector('.gameInfo').append(inputContainer);
 
 restartBtn.addEventListener("click", function () {
