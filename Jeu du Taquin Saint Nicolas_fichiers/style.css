@@ -1,0 +1,75 @@
+#puzzle-container {
+    display: grid;
+    margin: 20px;
+}
+
+.puzzle-piece {
+    width: 100px;
+    height: 100px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#puzzle-container.easy {
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px; 
+}
+
+#puzzle-container.medium {
+    grid-template-columns: repeat(4, 75px);
+    grid-gap: 4px; 
+}
+
+#puzzle-container.hard {
+    grid-template-columns: repeat(5, 60px);
+    grid-gap: 3px; 
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: url("cursor.png"), auto;
+}
+
+#new-game-button {
+    background-color: #095228;
+}
+
+#easy-button {
+    background-color: #DAA520;
+}
+
+#medium-button {
+    background-color: #C0C0C0;
+}
+
+#hard-button {
+    background-color: #6D071A;
+}
+
+#images-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.original-image {
+    max-width: 100%;
+    height: auto;
+    display: none; 
+}
+
+.original-image-container h2 {
+    margin-bottom: 10px;
+}
+#original-image-container{
+    display: none;
+}

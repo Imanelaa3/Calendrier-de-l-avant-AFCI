@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du Taquin Saint Nicolas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Jeu du Taquin Saint Nicolas</h1>
+<audio id="background-music"loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+<div id="timer" style="display: none;">0:00</div>
+
+<div id="original-images-container">
+    <img id="original-image-easy" class="original-image" src="nicolas.jpg" alt="Image originale facile">
+    <img id="original-image-medium" class="original-image" src="nicolas2.jpg" alt="Image originale moyenne">
+    <img id="original-image-hard" class="original-image" src="nicolas3.jpg" alt="Image originale difficile">
+</div>
+
+<div id="puzzle-container" class="easy"></div>
+
+<button id="new-game-button">Nouvelle Partie</button><br><br>
+<button id="easy-button" onclick="changeLevel('easy')">Facile</button>
+<button id="medium-button" onclick="changeLevel('medium')">Moyen</button>
+<button id="hard-button" onclick="changeLevel('hard')">Difficile</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>
