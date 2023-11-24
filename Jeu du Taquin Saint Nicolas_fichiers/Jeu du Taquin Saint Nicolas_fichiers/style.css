@@ -1,0 +1,107 @@
+body{
+    background-image: url("fond.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+}
+h1{
+    text-align: center;
+    color: #095228;
+}
+#puzzle-container {
+    display: grid;
+    margin:150px;
+}
+
+.puzzle-piece {
+    width: 100px;
+    height: 100px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#puzzle-container.easy {
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px; 
+}
+
+#puzzle-container.medium {
+    grid-template-columns: repeat(4, 75px);
+    grid-gap: 4px; 
+}
+
+#puzzle-container.hard {
+    grid-template-columns: repeat(5, 60px);
+    grid-gap: 3px; 
+}
+
+#puzzle-container.extreme {
+    grid-template-columns: repeat(6, 50px);
+    grid-gap: 2px; 
+}
+#puzzle-container.ultime {
+    grid-template-columns: repeat(7, 40px);
+    grid-gap: 2px; 
+}
+
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: url("cursor.png"), auto;
+}
+
+#new-game-button {
+    background-color: #095228;
+   
+}
+
+#easy-button {
+    background-color: #DAA520;
+}
+
+#medium-button {
+    background-color: #C0C0C0;
+}
+
+#hard-button {
+    background-color: #6D071A;
+}
+
+#extreme-button{
+    background-color: green;
+}
+#ultime-button{
+    background-color: red;
+}
+#images-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.original-image {
+   height: 500px;
+   width: 500px;
+   display: none; 
+}
+
+
+#original-image-container{
+   display: none;
+}
+
+#timer{
+    text-align: center;
+}
+.flex{
+    display: flex;
+}
