@@ -90,6 +90,8 @@ const levels = {
     easy: { boardSize: 3, pieceSize: 100, image: "nicolas.jpg" },
     medium: { boardSize: 4, pieceSize: 75, image: "nicolas2.jpg" },
     hard: { boardSize: 5, pieceSize: 60, image: "nicolas3.jpg" }
+   extreme: { boardSize: 7, pieceSize: 50, image: "pere.jpg" },
+    ultime: { boardSize:8, pieceSize: 40, image: "merci.jpg" }
 };
 
 let currentLevel = levels.easy;
@@ -104,6 +106,9 @@ document.getElementById("new-game-button").addEventListener("click", startNewGam
 document.getElementById("easy-button").addEventListener("click", () => changeLevel("easy"));
 document.getElementById("medium-button").addEventListener("click", () => changeLevel("medium"));
 document.getElementById("hard-button").addEventListener("click", () => changeLevel("hard"));
+document.getElementById("extreme-button").addEventListener("click", () => changeLevel("extreme"));
+document.getElementById("ultime-button").addEventListener("click", () => changeLevel("ultime"));
+
 
 function changeLevel(level) {
     currentLevel = levels[level];
