@@ -1,6 +1,18 @@
+body{
+    background-image: url("fond.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+}
+h1{
+    text-align: center;
+    color: #095228;
+
+
+
 #puzzle-container {
     display: grid;
-    margin: 20px;
+    margin: 150px;
 }
 
 .puzzle-piece {
@@ -23,6 +35,14 @@
 #puzzle-container.hard {
     grid-template-columns: repeat(5, 60px);
     grid-gap: 3px; 
+}
+#puzzle-container.extreme {
+    grid-template-columns: repeat(6, 50px);
+    grid-gap: 2px; 
+}
+#puzzle-container.ultime {
+    grid-template-columns: repeat(7, 40px);
+    grid-gap: 2px; 
 }
 
 button {
@@ -50,7 +70,12 @@ button {
 #hard-button {
     background-color: #6D071A;
 }
-
+#extreme-button{
+    background-color: green;
+}
+#ultime-button{
+    background-color: red;
+}
 #images-container {
     display: flex;
     justify-content: space-between;
@@ -62,14 +87,17 @@ button {
 }
 
 .original-image {
-    max-width: 100%;
-    height: auto;
+   height:500px;
+    width:500px;
     display: none; 
 }
 
-.original-image-container h2 {
-    margin-bottom: 10px;
-}
 #original-image-container{
     display: none;
+}
+    #timer{
+    text-align: center;
+}
+.flex{
+    display: flex;
 }
