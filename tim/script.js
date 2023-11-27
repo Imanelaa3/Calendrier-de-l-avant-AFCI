@@ -21,7 +21,7 @@ const styles = /* CSS */ `
         cursor: pointer;
     }
 
-    .number {
+    /* .number {
         position: relative;
         font-size: 2.5em;
         top: 35px;
@@ -52,7 +52,7 @@ const styles = /* CSS */ `
 
     .right {
         right: 0;
-    }
+    } */
 
     /* Modale */
     .modal-container {
@@ -199,49 +199,47 @@ styleElement.innerHTML = styles;
 body.append(styleElement);
 
 // Création modale
-const modalContainer = document.createElement('div')
-modalContainer.className = "modal-container"
-body.append(modalContainer)
-const modal = document.createElement('modal')
-modal.className = "modal"
-modalContainer.append(modal)
-const buttonModal = document.createElement('button')
-buttonModal.className = "close-modal"
-buttonModal.classList.add("modal-trigger")
-buttonModal.textContent = "X"
-modal.append(buttonModal)
+const modalContainer = document.createElement("div");
+modalContainer.className = "modal-container";
+body.append(modalContainer);
+const modal = document.createElement("modal");
+modal.className = "modal";
+modalContainer.append(modal);
+const buttonModal = document.createElement("button");
+buttonModal.className = "close-modal";
+buttonModal.classList.add("modal-trigger");
+buttonModal.textContent = "X";
+modal.append(buttonModal);
 
 // Créer le bouton
 const buttonCase = document.createElement("button");
-buttonCase.className = 'button';
+buttonCase.className = "button";
 buttonCase.classList.add("modal-btn", "modal-trigger");
 body.append(buttonCase);
 
-//Créer la partie gauche
-const leftHalf = document.createElement('div');
-leftHalf.className = 'left';
-buttonCase.append(leftHalf);
-const leftImage = document.createElement('img');
-leftImage.src = './img/gauche.png';
-leftImage.alt = 'leftimage';
-leftHalf.append(leftImage);
+// //Créer la partie gauche
+// const leftHalf = document.createElement("div");
+// leftHalf.className = "left";
+// buttonCase.append(leftHalf);
+// const leftImage = document.createElement("img");
+// leftImage.src = "./img/gauche.png";
+// leftImage.alt = "leftimage";
+// leftHalf.append(leftImage);
 
-// Créer la partie droite
-const rightHalf = document.createElement('div');
-rightHalf.className = 'right';
-buttonCase.append(rightHalf);
-const rightImage = document.createElement('img');
-rightImage.src = './img/droite.png';
-rightImage.alt = 'rightImage';
-rightHalf.appendChild(rightImage);
+// // Créer la partie droite
+// const rightHalf = document.createElement("div");
+// rightHalf.className = "right";
+// buttonCase.append(rightHalf);
+// const rightImage = document.createElement("img");
+// rightImage.src = "./img/droite.png";
+// rightImage.alt = "rightImage";
+// rightHalf.appendChild(rightImage);
 
 //Créer la partie Nombre
 const number = document.createElement("div");
-number.className = 'number';
-number.textContent = '6';
-buttonCase.append(number)
-
-
+number.className = "number";
+number.textContent = "6";
+buttonCase.append(number);
 
 /*
 =================================
@@ -251,62 +249,62 @@ et de la modal
 */
 
 // Sélection de mes différentes parties
-const containerModal = document.querySelector(".modal-container")
-const modalTriggers = document.querySelectorAll(".modal-trigger")
-const modalButton = document.querySelector(".close-modal")
+const containerModal = document.querySelector(".modal-container");
+const modalTriggers = document.querySelectorAll(".modal-trigger");
+const modalButton = document.querySelector(".close-modal");
 let isAnimating = false;
 
 // animation nombre
 function animation1() {
-    // Premier changement de transformation au bout de 0 ms
-    setTimeout(() => {
-        number.style.transition = "scale 1s linear";
-        number.style.scale= "1 -0.029";
-    }, 0);
+  // Premier changement de transformation au bout de 0 ms
+  setTimeout(() => {
+    number.style.transition = "scale 1s linear";
+    number.style.scale = "1 -0.029";
+  }, 0);
 
-    // Deuxième changement de transformation au bout de 2000 ms
-    setTimeout(() => {
-        number.style.transition = "rotate 2s linear"
-        number.style.rotate = "90deg";
-    }, 2000);
-    setTimeout(()=> {
-        number.style.display = "none";
-    }, 5000)
-    setTimeout(()=>{
-        // Cacher le bouton
-        buttonCase.style.display = "none";
-        // appararition de la modal au bout de 9000 ms
-        containerModal.classList.add("active");
-    }, 9000)
+  // Deuxième changement de transformation au bout de 2000 ms
+  setTimeout(() => {
+    number.style.transition = "rotate 2s linear";
+    number.style.rotate = "90deg";
+  }, 2000);
+  setTimeout(() => {
+    number.style.display = "none";
+  }, 5000);
+  setTimeout(() => {
+    // Cacher le bouton
+    buttonCase.style.display = "none";
+    // appararition de la modal au bout de 9000 ms
+    containerModal.classList.add("active");
+  }, 9000);
 }
-const backgroundMusic = document.getElementById('backgroundMusic');
+const backgroundMusic = document.getElementById("backgroundMusic");
 // event de déclenchement de mon button et des portes
 buttonCase.addEventListener("click", () => {
-    animation1()
-    if (!isAnimating) {
-        isAnimating = true;
-        leftHalf.style.transition = "transform 5s 5s ease";
-        rightHalf.style.transition = "transform 5s 5s ease";
-        leftHalf.style.transform = "translateX(-70%)";
-        rightHalf.style.transform = "translateX(70%)";
+  animation1();
+  if (!isAnimating) {
+    isAnimating = true;
+    leftHalf.style.transition = "transform 5s 5s ease";
+    rightHalf.style.transition = "transform 5s 5s ease";
+    leftHalf.style.transform = "translateX(-70%)";
+    rightHalf.style.transform = "translateX(70%)";
 
-        // 8000 ms: temps pour ajuster la transition de la musique avec les portes
-         setTimeout(() => {
-            // jouer la musique
-             backgroundMusic.play();
-         }, 8000);
-    }
-        // Start playing background music when the transition ends
+    // 8000 ms: temps pour ajuster la transition de la musique avec les portes
+    setTimeout(() => {
+      // jouer la musique
+      backgroundMusic.play();
+    }, 8000);
+  }
+  // Start playing background music when the transition ends
 });
 
 // Retirer ma modal
 
-modalButton.addEventListener("click", ()=> {
-    containerModal.classList.remove("active")
-    buttonCase.style.display = "block"
+modalButton.addEventListener("click", () => {
+  containerModal.classList.remove("active");
+  buttonCase.style.display = "block";
 
-    backgroundMusic.pause();
-})
+  backgroundMusic.pause();
+});
 
 /* 
 ======================
@@ -314,71 +312,69 @@ modalButton.addEventListener("click", ()=> {
 ======================
 */
 
-// Création des éléments Html 
-const game = document.createElement('div')
-game.className = "game"
-modalContainer.append(game)
+// Création des éléments Html
+const game = document.createElement("div");
+game.className = "game";
+modalContainer.append(game);
 
-const gameInfo = document.createElement('div')
-gameInfo.className = "gameInfo"
-game.append(gameInfo)
+const gameInfo = document.createElement("div");
+gameInfo.className = "gameInfo";
+game.append(gameInfo);
 
-const score = document.createElement('span')
-score.className = "score"
-score.textContent = "Your score : 0"
-gameInfo.append(score)
+const score = document.createElement("span");
+score.className = "score";
+score.textContent = "Your score : 0";
+gameInfo.append(score);
 
+const temps = document.createElement("span");
+temps.className = "temps";
+temps.textContent = "time : ";
+gameInfo.append(temps);
 
-const temps = document.createElement('span')
-temps.className = "temps"
-temps.textContent = "time : "
-gameInfo.append(temps)
+const containerGame = document.createElement("div");
+containerGame.className = "containerGame";
+game.append(containerGame);
 
-const containerGame = document.createElement('div')
-containerGame.className = "containerGame"
-game.append(containerGame)
+const settingsContainer = document.createElement("div");
+settingsContainer.className = "settingsContainer";
+game.append(settingsContainer);
 
-const settingsContainer = document.createElement('div')
-settingsContainer.className = "settingsContainer"
-game.append(settingsContainer)
+const startRestart = document.createElement("button");
+startRestart.className = "startRestart";
+startRestart.textContent = "Begin or restart";
+settingsContainer.append(startRestart);
 
-
-const startRestart = document.createElement('button')
-startRestart.className = "startRestart"
-startRestart.textContent = "Begin or restart"
-settingsContainer.append(startRestart)
-
-const rules = document.createElement('h1');
-rules.className = "rules"
-rules.textContent = "Touch as many Christmas gift as you can, but take care not to touch Santa Claus"
-settingsContainer.append(rules)
+const rules = document.createElement("h1");
+rules.className = "rules";
+rules.textContent =
+  "Touch as many Christmas gift as you can, but take care not to touch Santa Claus";
+settingsContainer.append(rules);
 
 // Création d'un bouton permettant d'arrêter la musique
-const stopMusic = document.createElement('button')
-stopMusic.className = 'stopMusic'
-stopMusic.textContent = 'stop music'
-settingsContainer.append(stopMusic)
-
+const stopMusic = document.createElement("button");
+stopMusic.className = "stopMusic";
+stopMusic.textContent = "stop music";
+settingsContainer.append(stopMusic);
 
 // Création de l'event stopMusic
 
-stopMusic.addEventListener('click', () => {
-    if (backgroundMusic.paused) {
-        // Si on met la musique est en pause, on appuye sur le bouton pour la jouer
-        stopMusic.textContent = 'stop music'
-        backgroundMusic.play();
-    } else {
-        // Si la musique est en train d'être jouer, la mettre en pause
-        stopMusic.textContent = 'play Music'
-        backgroundMusic.pause();
-    }
+stopMusic.addEventListener("click", () => {
+  if (backgroundMusic.paused) {
+    // Si on met la musique est en pause, on appuye sur le bouton pour la jouer
+    stopMusic.textContent = "stop music";
+    backgroundMusic.play();
+  } else {
+    // Si la musique est en train d'être jouer, la mettre en pause
+    stopMusic.textContent = "play Music";
+    backgroundMusic.pause();
+  }
 });
 
 // Sélection de mes éléments Html
-let theScore = document.querySelector('.score');
-let leTemps = document.querySelector('.temps');
-let containerShoot = document.querySelector('.containerGame');
-let restartBtn = document.querySelector('.startRestart');
+let theScore = document.querySelector(".score");
+let leTemps = document.querySelector(".temps");
+let containerShoot = document.querySelector(".containerGame");
+let restartBtn = document.querySelector(".startRestart");
 let gameProgress = false;
 
 // Création dynamique de l'input pour la durée du jeu
@@ -394,63 +390,187 @@ gameDurationInput.value = "30";
 
 inputContainer.append(label, gameDurationInput);
 // je met dans gameInfo l'input que je viens de créer
-document.querySelector('.gameInfo').append(inputContainer);
+document.querySelector(".gameInfo").append(inputContainer);
 
 restartBtn.addEventListener("click", function () {
-    // Tant que le jeu est en cours, on ne fait rien
-    if (gameProgress === true) {
-        return;
+  // Tant que le jeu est en cours, on ne fait rien
+  if (gameProgress === true) {
+    return;
+  }
+
+  gameProgress = true;
+  let score = 0;
+  let temps = parseInt(gameDurationInput.value); // Utilisez la valeur de l'input comme la durée du jeu
+  containerShoot.innerHTML = "";
+
+  let interval = setInterval(function cibleBouge() {
+    function createImage(src, id) {
+      let img = document.createElement("img");
+      img.src = src;
+      img.id = id;
+      containerShoot.append(img);
+      img.style.top =
+        Math.random() * (containerShoot.clientHeight - img.offsetHeight) + "px";
+      img.style.right =
+        Math.random() * (containerShoot.clientWidth - img.offsetWidth) + "px";
+      return img;
     }
 
-    gameProgress = true;
-    let score = 0;
-    let temps = parseInt(gameDurationInput.value); // Utilisez la valeur de l'input comme la durée du jeu
-    containerShoot.innerHTML = "";
+    let cible = createImage("./img/cadeau.jpg", "cible");
+    let pereNoel = createImage("./img/pereNoel.jpg", "pereNoel");
 
-    let interval = setInterval(function cibleBouge() {
-        function createImage(src, id) {
-            let img = document.createElement("img");
-            img.src = src;
-            img.id = id;
-            containerShoot.append(img);
-            img.style.top = Math.random() * (containerShoot.clientHeight - img.offsetHeight) + "px";
-            img.style.right = Math.random() * (containerShoot.clientWidth - img.offsetWidth) + "px";
-            return img;
-        }
+    // disparition cible après un certain temps
+    setTimeout(function () {
+      cible.remove();
+      pereNoel.remove();
+    }, 2000);
 
-        let cible = createImage("./img/cadeau.jpg", "cible");
-        let pereNoel = createImage("./img/pereNoel.jpg", "pereNoel");
+    // clique sur la cible
+    cible.addEventListener("click", function () {
+      score += 1;
+      cible.style.display = "none";
+      theScore.textContent = `score : ${score}`;
+    });
 
-        // disparition cible après un certain temps
-        setTimeout(function () {
-            cible.remove();
-            pereNoel.remove();
-        }, 2000);
+    // clique sur le père Noël
+    pereNoel.addEventListener("click", function () {
+      score -= 1;
+      pereNoel.style.display = "none";
+      theScore.textContent = `score : ${score}`;
+    });
 
-        // clique sur la cible
-        cible.addEventListener("click", function () {
-            score += 1;
-            cible.style.display = "none";
-            theScore.textContent = `score : ${score}`;
-        });
+    temps -= 1;
 
-        // clique sur le père Noël
-        pereNoel.addEventListener("click", function () {
-            score -= 1;
-            pereNoel.style.display = "none";
-            theScore.textContent = `score : ${score}`;
-        });
+    // affichage de nos infos
+    leTemps.textContent = `time : ${temps}`;
 
-        temps -= 1;
-
-        // affichage de nos infos
-        leTemps.textContent = `time : ${temps}`;
-
-        // fin du jeu
-        if (temps === 0) {
-            clearInterval(interval);
-            containerShoot.textContent = "The End";
-            gameProgress = false; // on met fin au jeu
-        }
-    }, 500); // Définir le délai à 500 millisecondes (0,5 seconde) pour une apparition plus fréquente
+    // fin du jeu
+    if (temps === 0) {
+      clearInterval(interval);
+      containerShoot.textContent = "The End";
+      gameProgress = false; // on met fin au jeu
+    }
+  }, 500); // Définir le délai à 500 millisecondes (0,5 seconde) pour une apparition plus fréquente
 });
+
+/* 
+class ChristmasCalendar {
+  constructor() {
+    this.body = document.querySelector("body");
+    this.modalContainer = document.createElement("div");
+    this.modal = document.createElement("modal");
+    this.buttonModal = document.createElement("button");
+    this.buttonCase = document.createElement("button");
+    this.number = document.createElement("div");
+    this.containerModal = document.querySelector(".modal-container");
+    this.modalTriggers = document.querySelectorAll(".modal-trigger");
+    this.modalButton = document.querySelector(".close-modal");
+    this.isAnimating = false;
+
+    this.createStyles();
+    this.createModal();
+    this.createButton();
+    this.createNumber();
+    this.addEventListeners();
+  }
+
+  createStyles() {
+    this.body.style.height = "100vh";
+
+    const styleElement = document.createElement("style");
+    styleElement.innerHTML = styles;
+    this.body.append(styleElement);
+  }
+
+  createModal() {
+    this.modalContainer.className = "modal-container";
+    this.body.append(this.modalContainer);
+
+    this.modal.className = "modal";
+    this.modalContainer.append(this.modal);
+
+    this.buttonModal.className = "close-modal";
+    this.buttonModal.classList.add("modal-trigger");
+    this.buttonModal.textContent = "X";
+    this.modal.append(this.buttonModal);
+  }
+
+  createButton() {
+    this.buttonCase.className = "button";
+    this.buttonCase.classList.add("modal-btn", "modal-trigger");
+    this.body.append(this.buttonCase);
+  }
+
+  createNumber() {
+    this.number.className = "number";
+    this.number.textContent = "6";
+    this.buttonCase.append(this.number);
+  }
+
+  addEventListeners() {
+    this.buttonCase.addEventListener("click", () => {
+      this.animation1();
+      if (!this.isAnimating) {
+        this.isAnimating = true;
+        // Include the logic for doors animation here
+      }
+    });
+
+    this.modalButton.addEventListener("click", () => {
+      this.containerModal.classList.remove("active");
+      this.buttonCase.style.display = "block";
+      // Include logic to pause background music
+    });
+  }
+
+  animation1() {
+    setTimeout(() => {
+      this.number.style.transition = "scale 1s linear";
+      this.number.style.scale = "1 -0.029";
+    }, 0);
+
+    setTimeout(() => {
+      this.number.style.transition = "rotate 2s linear";
+      this.number.style.rotate = "90deg";
+    }, 2000);
+
+    setTimeout(() => {
+      this.number.style.display = "none";
+    }, 5000);
+
+    setTimeout(() => {
+      this.buttonCase.style.display = "none";
+      this.containerModal.classList.add("active");
+      // Include logic to play background music
+    }, 9000);
+  }
+
+  handleButtonClick() {
+    this.animation1();
+    if (!this.isAnimating) {
+      this.isAnimating = true;
+      this.leftHalf.style.transition = "transform 5s 5s ease";
+      this.rightHalf.style.transition = "transform 5s 5s ease";
+      this.leftHalf.style.transform = "translateX(-70%)";
+      this.rightHalf.style.transform = "translateX(70%)";
+
+      // 8000 ms: temps pour ajuster la transition de la musique avec les portes
+      setTimeout(() => {
+        // jouer la musique
+        backgroundMusic.play();
+      }, 8000);
+    }
+    // Start playing background music when the transition ends
+  }
+
+  handleModalButtonClick() {
+    this.containerModal.classList.remove("active");
+    this.buttonCase.style.display = "block";
+
+    backgroundMusic.pause();
+  }
+}
+
+// Instantiate the ChristmasCalendar class
+const christmasCalendarInstance = new ChristmasCalendar();
+ */
