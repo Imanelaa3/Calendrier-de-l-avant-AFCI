@@ -5,10 +5,15 @@
 body {
     margin: 0;
     font-family: gruppo, sans-serif;
+    
+    
+    
 }
 
 .game {
-    background-color: #222;
+    background-image: url(./img/pere-noel.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     position: relative;
     display: flex;
     align-items: center;
