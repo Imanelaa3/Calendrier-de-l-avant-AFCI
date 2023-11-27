@@ -2,6 +2,7 @@
 
 //-----------Import-----------------
 import Imane from "./imane.js";
+import aude from '../audejeu/script.js'
 
 //----------------B1------------------
 
@@ -10,8 +11,8 @@ const baliseAnim = document.querySelector("balise-animation");
 const currentDate = new Date();
 
 const listImport = {
-  1: "./ImaneAnim.js",
-  2: "",
+  1: { file: "./ImaneAnim.js" },
+  2: { file: "../audejeu/script.js", template: "#aude" },
   3: "",
   4: "",
   5: "",
@@ -46,16 +47,22 @@ buttons.forEach((button) => {
         baliseAnim.style.display === "none" ||
         baliseAnim.style.display === ""
       ) {
-        const import1 = await import(listImport[day]);
+        console.log(listImport[day],day);
+        const import1 = await import(listImport[day].file);
         console.log(import1);
         const anim = new import1.default();
         // console.log(anim);
+        const template = document.querySelector(listImport[day].template);
+        if (template) {
+            console.log('template');
+          baliseAnim.append(template.content);
+        }
         if (anim.canvas) {
           baliseAnim.append(anim.canvas);
         } else if (anim instanceof HTMLElement) {
           baliseAnim.append(anim);
         }
-       
+
         baliseAnim.append(anim.canvas);
         baliseAnim.style.display = "block";
         console.log("ok");
