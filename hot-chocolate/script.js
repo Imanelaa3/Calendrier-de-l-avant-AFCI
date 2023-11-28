@@ -25,7 +25,7 @@ li3.textContent = "1 cuillère à soupe de cassonade";
 document.body.append(li3);
 
 const li4 = document.createElement('li');
-li4.textContent = "Une ou deux de vos garnitures préférées: crème fouettée, ou cannes de bonbon, ou guimauves, ou cannelle, ou plus de chocolat";
+li4.textContent = "Une ou deux de vos garnitures préférées: crème fouettée, ou canne à sucre(bonbon), ou guimauves, ou cannelle, ou plus de chocolat";
 document.body.append(li4);
 
 const h22 = document.createElement('h3');
@@ -37,19 +37,19 @@ p.textContent = "1. Cassez le chocolat noir en carrés.";
 document.body.append(p);
 
 const p2 = document.createElement('p');
-p2.textContent = "2. Versez le lait dans une casserole. Chauffer à feu doux. Lorsque le lait est chaud, ajoutez le chocolat et mélangez au fouet de cuisine. Cuire jusqu'à ce que le chocolat soit complètement dissous.";
+p2.textContent = "2. Versez le lait dans une casserole. Chauffer à feu doux. Lorsque le lait est chaud, ajoutez le chocolat et mélangez au fouet. Cuire jusqu'à ce que le chocolat soit complètement dissout.";
 document.body.append(p2);
 
 const p3 = document.createElement('p');
-p3.textContent = "3. Ajoutez le sucre, portez le lait à ébullition (ne faites pas bouillir !) et versez dans des tasses.";
+p3.textContent = "3. Ajoutez le sucre, portez le lait à ébullition et versez le tout.";
 document.body.append(p3);
 
 const p4 = document.createElement('p');
-p4.textContent = "4. Garnissez de vos garnitures de chocolat chaud préférées comme de la crème fouettée, des cannes de bonbon, des guimauves, de la cannelle ou encore du chocolat, bien sûr!";
+p4.textContent = "4. Décorez avec vos garnitures que vous avez choisies.";
 document.body.append(p4);
 
 const p5 = document.createElement('p');
-p5.textContent = "En écoutant votre playlist préféré, prenez votre doux et confortable plaid et dégustez votre chocolat chaud. Sentez-vous l'atmosphère du Noël dans l'air ?";
+p5.textContent = "En écoutant votre playlist préférée, prenez votre doux et confortable plaid et dégustez votre chocolat chaud. Sentez-vous l'atmosphère du Noël dans l'air ?";
 document.body.append(p5);
 
 document.body.style.background = "lightpink";
