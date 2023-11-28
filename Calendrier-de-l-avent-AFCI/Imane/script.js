@@ -2,11 +2,8 @@
 
 //-----------Import-----------------
 import Imane from "./imane.js";
-import Dylan from "../../dylan/dylan.js"
-import Dylan2 from "../../dylan/dylan2.js"
-
-
-
+import Dylan from "../../dylan/dylan.js";
+import Dylan2 from "../../dylan/dylan2.js";
 
 //----------------B1------------------
 
@@ -17,9 +14,9 @@ const currentDate = new Date();
 const listImport = {
   1: { file: "./ImaneAnim.js" },
   2: { file: "../audejeu/script.js", template: "#aude" },
-  3: {file:"../../dylan/dylan.js",template:"#dylan"},
-  4: {file:"../../dylan/dylan2.js",template:'#dylan2'},
-  5: {file:"../Pierre-Papier-Cisseau-main/script.js",template:'#faissal'},
+  3: { file: "../../dylan/dylan.js", template: "#dylan" },
+  4: { file: "../../dylan/dylan2.js", template: "#dylan2" },
+  5: { file: "../Pierre-Papier-Cisseau-main/script.js", template: "#faissal" },
   6: "",
   7: "",
   8: "",
@@ -55,10 +52,8 @@ buttons.forEach((button) => {
         const import1 = await import(listImport[day].file);
         //console.log(import1);
         const anim = new import1.default();
-        
+
         const template = document.querySelector(listImport[day].template);
-        
-       
 
         if (template) {
           //console.log("template");
@@ -72,7 +67,6 @@ buttons.forEach((button) => {
           baliseAnim.append(anim.container);
         }
 
-        baliseAnim.append(anim.canvas);
         baliseAnim.style.display = "block";
         //console.log("ok");
       }
@@ -114,7 +108,5 @@ function animationNew() {
   newToAnimate.animate(keyframes, options);
   //console.log("new");
 }
-
-
 
 //function import (voir cours)

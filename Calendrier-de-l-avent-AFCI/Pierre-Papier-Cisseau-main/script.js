@@ -166,6 +166,7 @@ export default class Game {
         this.elements.forEach(elementData => {
             const elementNode = this.createElement(elementData);
             const button = elementNode.querySelector("button");
+            button.className = "button5"
             button.addEventListener("click", () => this.play(elementData.name));
             this.gameContainer.appendChild(elementNode);
         });
