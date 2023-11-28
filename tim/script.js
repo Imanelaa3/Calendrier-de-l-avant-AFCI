@@ -13,7 +13,6 @@ const styles = /* CSS */ `
 
     /* Case calendrier */
     .button {
-        position: relative;
         background: white;
         width: 200px;
         height: 284px;
@@ -185,293 +184,50 @@ const styles = /* CSS */ `
     }
 `;
 
-/*
-==============================
-Création de toutes mes parties 
-==============================
-*/
-const body = document.querySelector("body");
-body.style.height = "100vh";
 
-// Injecter le style
-const styleElement = document.createElement("style");
-styleElement.innerHTML = styles;
-body.append(styleElement);
-
-// Création modale
-const modalContainer = document.createElement("div");
-modalContainer.className = "modal-container";
-body.append(modalContainer);
-const modal = document.createElement("modal");
-modal.className = "modal";
-modalContainer.append(modal);
-const buttonModal = document.createElement("button");
-buttonModal.className = "close-modal";
-buttonModal.classList.add("modal-trigger");
-buttonModal.textContent = "X";
-modal.append(buttonModal);
-
-// Créer le bouton
-const buttonCase = document.createElement("button");
-buttonCase.className = "button";
-buttonCase.classList.add("modal-btn", "modal-trigger");
-body.append(buttonCase);
-
-// //Créer la partie gauche
-// const leftHalf = document.createElement("div");
-// leftHalf.className = "left";
-// buttonCase.append(leftHalf);
-// const leftImage = document.createElement("img");
-// leftImage.src = "./img/gauche.png";
-// leftImage.alt = "leftimage";
-// leftHalf.append(leftImage);
-
-// // Créer la partie droite
-// const rightHalf = document.createElement("div");
-// rightHalf.className = "right";
-// buttonCase.append(rightHalf);
-// const rightImage = document.createElement("img");
-// rightImage.src = "./img/droite.png";
-// rightImage.alt = "rightImage";
-// rightHalf.appendChild(rightImage);
-
-//Créer la partie Nombre
-const number = document.createElement("div");
-number.className = "number";
-number.textContent = "6";
-buttonCase.append(number);
-
-/*
-=================================
-Création de ma case du calendrier
-et de la modal
-=================================
-*/
-
-// Sélection de mes différentes parties
-const containerModal = document.querySelector(".modal-container");
-const modalTriggers = document.querySelectorAll(".modal-trigger");
-const modalButton = document.querySelector(".close-modal");
-let isAnimating = false;
-
-// animation nombre
-function animation1() {
-  // Premier changement de transformation au bout de 0 ms
-  setTimeout(() => {
-    number.style.transition = "scale 1s linear";
-    number.style.scale = "1 -0.029";
-  }, 0);
-
-  // Deuxième changement de transformation au bout de 2000 ms
-  setTimeout(() => {
-    number.style.transition = "rotate 2s linear";
-    number.style.rotate = "90deg";
-  }, 2000);
-  setTimeout(() => {
-    number.style.display = "none";
-  }, 5000);
-  setTimeout(() => {
-    // Cacher le bouton
-    buttonCase.style.display = "none";
-    // appararition de la modal au bout de 9000 ms
-    containerModal.classList.add("active");
-  }, 9000);
-}
-const backgroundMusic = document.getElementById("backgroundMusic");
-// event de déclenchement de mon button et des portes
-buttonCase.addEventListener("click", () => {
-  animation1();
-  if (!isAnimating) {
-    isAnimating = true;
-    leftHalf.style.transition = "transform 5s 5s ease";
-    rightHalf.style.transition = "transform 5s 5s ease";
-    leftHalf.style.transform = "translateX(-70%)";
-    rightHalf.style.transform = "translateX(70%)";
-
-    // 8000 ms: temps pour ajuster la transition de la musique avec les portes
-    setTimeout(() => {
-      // jouer la musique
-      backgroundMusic.play();
-    }, 8000);
-  }
-  // Start playing background music when the transition ends
-});
-
-// Retirer ma modal
-
-modalButton.addEventListener("click", () => {
-  containerModal.classList.remove("active");
-  buttonCase.style.display = "block";
-
-  backgroundMusic.pause();
-});
-
-/* 
-======================
-    Création Jeu
-======================
-*/
-
-// Création des éléments Html
-const game = document.createElement("div");
-game.className = "game";
-modalContainer.append(game);
-
-const gameInfo = document.createElement("div");
-gameInfo.className = "gameInfo";
-game.append(gameInfo);
-
-const score = document.createElement("span");
-score.className = "score";
-score.textContent = "Your score : 0";
-gameInfo.append(score);
-
-const temps = document.createElement("span");
-temps.className = "temps";
-temps.textContent = "time : ";
-gameInfo.append(temps);
-
-const containerGame = document.createElement("div");
-containerGame.className = "containerGame";
-game.append(containerGame);
-
-const settingsContainer = document.createElement("div");
-settingsContainer.className = "settingsContainer";
-game.append(settingsContainer);
-
-const startRestart = document.createElement("button");
-startRestart.className = "startRestart";
-startRestart.textContent = "Begin or restart";
-settingsContainer.append(startRestart);
-
-const rules = document.createElement("h1");
-rules.className = "rules";
-rules.textContent =
-  "Touch as many Christmas gift as you can, but take care not to touch Santa Claus";
-settingsContainer.append(rules);
-
-// Création d'un bouton permettant d'arrêter la musique
-const stopMusic = document.createElement("button");
-stopMusic.className = "stopMusic";
-stopMusic.textContent = "stop music";
-settingsContainer.append(stopMusic);
-
-// Création de l'event stopMusic
-
-stopMusic.addEventListener("click", () => {
-  if (backgroundMusic.paused) {
-    // Si on met la musique est en pause, on appuye sur le bouton pour la jouer
-    stopMusic.textContent = "stop music";
-    backgroundMusic.play();
-  } else {
-    // Si la musique est en train d'être jouer, la mettre en pause
-    stopMusic.textContent = "play Music";
-    backgroundMusic.pause();
-  }
-});
-
-// Sélection de mes éléments Html
-let theScore = document.querySelector(".score");
-let leTemps = document.querySelector(".temps");
-let containerShoot = document.querySelector(".containerGame");
-let restartBtn = document.querySelector(".startRestart");
-let gameProgress = false;
-
-// Création dynamique de l'input pour la durée du jeu
-let inputContainer = document.createElement("div");
-inputContainer.className = "time-input-container";
-let label = document.createElement("label");
-label.textContent = "Set Game Duration:";
-let gameDurationInput = document.createElement("input");
-gameDurationInput.type = "number";
-gameDurationInput.id = "gameDurationInput";
-gameDurationInput.min = "1";
-gameDurationInput.value = "30";
-
-inputContainer.append(label, gameDurationInput);
-// je met dans gameInfo l'input que je viens de créer
-document.querySelector(".gameInfo").append(inputContainer);
-
-restartBtn.addEventListener("click", function () {
-  // Tant que le jeu est en cours, on ne fait rien
-  if (gameProgress === true) {
-    return;
-  }
-
-  gameProgress = true;
-  let score = 0;
-  let temps = parseInt(gameDurationInput.value); // Utilisez la valeur de l'input comme la durée du jeu
-  containerShoot.innerHTML = "";
-
-  let interval = setInterval(function cibleBouge() {
-    function createImage(src, id) {
-      let img = document.createElement("img");
-      img.src = src;
-      img.id = id;
-      containerShoot.append(img);
-      img.style.top =
-        Math.random() * (containerShoot.clientHeight - img.offsetHeight) + "px";
-      img.style.right =
-        Math.random() * (containerShoot.clientWidth - img.offsetWidth) + "px";
-      return img;
-    }
-
-    let cible = createImage("./img/cadeau.jpg", "cible");
-    let pereNoel = createImage("./img/pereNoel.jpg", "pereNoel");
-
-    // disparition cible après un certain temps
-    setTimeout(function () {
-      cible.remove();
-      pereNoel.remove();
-    }, 2000);
-
-    // clique sur la cible
-    cible.addEventListener("click", function () {
-      score += 1;
-      cible.style.display = "none";
-      theScore.textContent = `score : ${score}`;
-    });
-
-    // clique sur le père Noël
-    pereNoel.addEventListener("click", function () {
-      score -= 1;
-      pereNoel.style.display = "none";
-      theScore.textContent = `score : ${score}`;
-    });
-
-    temps -= 1;
-
-    // affichage de nos infos
-    leTemps.textContent = `time : ${temps}`;
-
-    // fin du jeu
-    if (temps === 0) {
-      clearInterval(interval);
-      containerShoot.textContent = "The End";
-      gameProgress = false; // on met fin au jeu
-    }
-  }, 500); // Définir le délai à 500 millisecondes (0,5 seconde) pour une apparition plus fréquente
-});
-
-/* 
 class ChristmasCalendar {
   constructor() {
+    // modal
     this.body = document.querySelector("body");
     this.modalContainer = document.createElement("div");
     this.modal = document.createElement("modal");
-    this.buttonModal = document.createElement("button");
+    this.closeButton = document.createElement("button");
     this.buttonCase = document.createElement("button");
     this.number = document.createElement("div");
-    this.containerModal = document.querySelector(".modal-container");
+    // this.containerModal = document.querySelector(".modal-container");
     this.modalTriggers = document.querySelectorAll(".modal-trigger");
-    this.modalButton = document.querySelector(".close-modal");
+    // this.closeButton = document.querySelector(".close-modal");
     this.isAnimating = false;
+    this.backgroundMusic = document.getElementById("backgroundMusic");
 
+
+    // Game
+    this.game = document.createElement("div");
+    this.gameInfo = document.createElement("div");
+    this.scoreSpan = document.createElement("span");
+    this.tempsSpan = document.createElement("span");
+    this.containerGame = document.createElement("div");
+    this.settingsContainer = document.createElement("div");
+    this.startRestart = document.createElement("button");
+    this.rules = document.createElement("h1");
+    this.stopMusic = document.createElement("button");
+    // this.theScore = document.querySelector(".score");
+    // this.leTemps = document.querySelector(".temps");
+    // this.containerShoot = document.querySelector(".containerGame");
+    // this.restartBtn = document.querySelector(".startRestart");
+    this.gameProgress = false;
+    this.score = 0;
+    this.temps = 30; // Default game duration
+    this.interval = null;
+ 
+    
     this.createStyles();
     this.createModal();
     this.createButton();
-    this.createNumber();
+    // this.createNumber();
     this.addEventListeners();
+    this.createGame();
+    this.createInputContainer();
   }
 
   createStyles() {
@@ -489,10 +245,10 @@ class ChristmasCalendar {
     this.modal.className = "modal";
     this.modalContainer.append(this.modal);
 
-    this.buttonModal.className = "close-modal";
-    this.buttonModal.classList.add("modal-trigger");
-    this.buttonModal.textContent = "X";
-    this.modal.append(this.buttonModal);
+    this.closeButton.className = "close-modal";
+    this.closeButton.classList.add("modal-trigger");
+    this.closeButton.textContent = "X";
+    this.modal.append(this.closeButton);
   }
 
   createButton() {
@@ -501,11 +257,11 @@ class ChristmasCalendar {
     this.body.append(this.buttonCase);
   }
 
-  createNumber() {
-    this.number.className = "number";
-    this.number.textContent = "6";
-    this.buttonCase.append(this.number);
-  }
+  // createNumber() {
+  //   this.number.className = "number";
+  //   this.number.textContent = "6";
+  //   this.buttonCase.append(this.number);
+  // }
 
   addEventListeners() {
     this.buttonCase.addEventListener("click", () => {
@@ -516,34 +272,54 @@ class ChristmasCalendar {
       }
     });
 
-    this.modalButton.addEventListener("click", () => {
-      this.containerModal.classList.remove("active");
+    this.closeButton.addEventListener("click", () => {
+      this.modalContainer.classList.remove("active");
       this.buttonCase.style.display = "block";
       // Include logic to pause background music
+      this.backgroundMusic.pause();
     });
+
+    this.stopMusic.addEventListener("click", () => {
+      if (this.backgroundMusic.paused) {
+        // Si on met la musique est en pause, on appuye sur le bouton pour la jouer
+        this.stopMusic.textContent = "stop music";
+        this.backgroundMusic.play();
+      } else {
+        // Si la musique est en train d'être jouer, la mettre en pause
+        this.stopMusic.textContent = "play Music";
+        this.backgroundMusic.pause();
+      }
+    });
+
+    this.startRestart.addEventListener("click", () => {
+      this.handleRestartButtonClick();
+    })
+
   }
 
   animation1() {
-    setTimeout(() => {
-      this.number.style.transition = "scale 1s linear";
-      this.number.style.scale = "1 -0.029";
-    }, 0);
+    // setTimeout(() => {
+    //   this.number.style.transition = "scale 1s linear";
+    //   this.number.style.scale = "1 -0.029";
+    // }, 0);
 
-    setTimeout(() => {
-      this.number.style.transition = "rotate 2s linear";
-      this.number.style.rotate = "90deg";
-    }, 2000);
+    // setTimeout(() => {
+    //   this.number.style.transition = "rotate 2s linear";
+    //   this.number.style.rotate = "90deg";
+    // }, 2000);
 
-    setTimeout(() => {
-      this.number.style.display = "none";
-    }, 5000);
+    // setTimeout(() => {
+    //   this.number.style.display = "none";
+    // }, 5000);
 
     setTimeout(() => {
       this.buttonCase.style.display = "none";
-      this.containerModal.classList.add("active");
+      this.modalContainer.classList.add("active");
       // Include logic to play background music
-    }, 9000);
+      backgroundMusic.play();
+    }, 0);
   }
+
 
   handleButtonClick() {
     this.animation1();
@@ -563,14 +339,137 @@ class ChristmasCalendar {
     // Start playing background music when the transition ends
   }
 
-  handleModalButtonClick() {
-    this.containerModal.classList.remove("active");
-    this.buttonCase.style.display = "block";
 
-    backgroundMusic.pause();
+  createGame() {
+  this.game.className = "game";
+  this.modalContainer.append(this.game);
+
+  this.gameInfo.className = "gameInfo";
+  this.game.append(this.gameInfo);
+
+  this.scoreSpan.className = "score";
+  this.scoreSpan.textContent = "Your score : 0";
+  this.gameInfo.append(this.scoreSpan);
+
+  this.tempsSpan.className = "temps";
+  this.tempsSpan.textContent = "time : ";
+  this.gameInfo.append(this.tempsSpan);
+
+  this.containerGame.className = "containerGame";
+  this.game.append(this.containerGame);
+
+  this.settingsContainer.className = "settingsContainer";
+  this.game.append(this.settingsContainer);
+
+  this.startRestart.className = "startRestart";
+  this.startRestart.textContent = "Begin or restart";
+  this.settingsContainer.append(this.startRestart);
+
+  this.rules.className = "rules";
+  this.rules.textContent =
+  "Touch as many Christmas gift as you can, but take care not to touch Santa Claus";
+  this.settingsContainer.append(this.rules);
+
+  this.stopMusic.className = "stopMusic";
+  this.stopMusic.textContent = "stop music";
+  this.settingsContainer.append(this.stopMusic);
   }
+
+  createInputContainer() {
+    this.inputContainer = document.createElement("div");
+    this.inputContainer.className = "time-input-container";
+    const label = document.createElement("label");
+    label.textContent = "Set Game Duration:";
+    this.gameDurationInput = document.createElement("input");
+    this.gameDurationInput.type = "number";
+    this.gameDurationInput.id = "gameDurationInput";
+    this.gameDurationInput.min = "1";
+    this.gameDurationInput.value = "30";
+
+    this.inputContainer.append(label, this.gameDurationInput);
+    // Append the input to gameInfo
+    this.gameInfo.append(this.inputContainer);
+  }
+
+  handleRestartButtonClick() {
+    // While the game is in progress, do nothing
+    if (this.gameProgress) {
+      return;
+    }
+
+    this.gameProgress = true;
+    this.score = 0;
+    this.temps = parseInt(this.gameDurationInput.value) || 30; // Use the input value as the game duration
+    this.containerGame.innerHTML = "";
+
+    this.startGame();
+  }
+  startGame() {
+    this.interval = setInterval(() => {
+      this.cibleBouge();
+    }, 500);
+  }
+  cibleBouge() {
+    function createImage(src, id) {
+      let img = document.createElement("img");
+      img.src = src;
+      img.id = id;
+      this.containerGame.append(img);
+      img.style.top =
+        Math.random() * (this.containerGame.clientHeight - img.offsetHeight) +
+        "px";
+      img.style.right =
+        Math.random() * (this.containerGame.clientWidth - img.offsetWidth) +
+        "px";
+      return img;
+    }
+
+    let cible = createImage.call(this, "./img/cadeau.jpg", "cible");
+    let pereNoel = createImage.call(this, "./img/pereNoel.jpg", "pereNoel");
+
+    // Hide images after a certain time
+    setTimeout(() => {
+      cible.remove();
+      pereNoel.remove();
+    }, 2000);
+
+    // Handle click on the Christmas gift
+    cible.addEventListener("click", () => {
+      this.handleCibleClick(cible);
+    });
+
+    // Handle click on Santa Claus
+    pereNoel.addEventListener("click", () => {
+      this.handlePereNoelClick(pereNoel);
+    });
+
+    // Decrement time
+    this.temps -= 1;
+
+    // Display info
+    this.tempsSpan.textContent = `Time: ${this.temps}`;
+
+    // Game over
+    if (this.temps === 0) {
+      clearInterval(this.interval);
+      this.containerGame.textContent = "The End";
+      this.gameProgress = false; // End the game
+    }
+  }
+
+  handleCibleClick(cible) {
+    this.score += 1;
+    cible.style.display = "none";
+    this.scoreSpan.textContent = `Score: ${this.score}`;
+  }
+
+  handlePereNoelClick(pereNoel) {
+    this.score -= 1;
+    pereNoel.style.display = "none";
+    this.scoreSpan.textContent = `Score: ${this.score}`;
+  }
+
 }
 
 // Instantiate the ChristmasCalendar class
 const christmasCalendarInstance = new ChristmasCalendar();
- */
