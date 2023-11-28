@@ -32,16 +32,7 @@ h1{
     border: 4px dotted green;
     border-radius: 20px;
 }
-img{
-    height: 100px;
-    width: 200px;
-    position: absolute;
-    right: -10px;
-    top: -5px;
-    z-index: -1;
 
-    
-}
 
 button{
     border-radius: 5px;

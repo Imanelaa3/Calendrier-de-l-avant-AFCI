@@ -2,8 +2,9 @@
 
 //-----------Import-----------------
 import Imane from "./imane.js";
-import Dylan from "../../dylan/Calendrier-de-l-avent-AFCI/Imane/dylan.js"
-import Dylan2 from "../../dylan/Calendrier-de-l-avent-AFCI/Imane/dylan2.js"
+import Dylan from "../../dylan/dylan.js"
+import Dylan2 from "../../dylan/dylan2.js"
+
 
 
 
@@ -16,9 +17,9 @@ const currentDate = new Date();
 const listImport = {
   1: { file: "./ImaneAnim.js" },
   2: { file: "../audejeu/script.js", template: "#aude" },
-  3: {file:"../../dylan/Calendrier-de-l-avent-AFCI/Imane/dylan.js",template:"#dylan"},
-  4: {file:"../../dylan/Calendrier-de-l-avent-AFCI/Imane/dylan2.js",template:'#dylan2'},
-  5: "",
+  3: {file:"../../dylan/dylan.js",template:"#dylan"},
+  4: {file:"../../dylan/dylan2.js",template:'#dylan2'},
+  5: {file:"../Pierre-Papier-Cisseau-main/script.js",template:'#faissal'},
   6: "",
   7: "",
   8: "",
@@ -50,9 +51,9 @@ buttons.forEach((button) => {
         baliseAnim.style.display === "none" ||
         baliseAnim.style.display === ""
       ) {
-        console.log(listImport[day], day);
+        //console.log(listImport[day], day);
         const import1 = await import(listImport[day].file);
-        console.log(import1);
+        //console.log(import1);
         const anim = new import1.default();
         
         const template = document.querySelector(listImport[day].template);
@@ -60,7 +61,7 @@ buttons.forEach((button) => {
        
 
         if (template) {
-          console.log("template");
+          //console.log("template");
           baliseAnim.append(template.content);
         }
         if (anim.canvas) {
@@ -73,7 +74,7 @@ buttons.forEach((button) => {
 
         baliseAnim.append(anim.canvas);
         baliseAnim.style.display = "block";
-        console.log("ok");
+        //console.log("ok");
       }
 
       //TODO function import
@@ -111,7 +112,7 @@ function animationNew() {
   };
 
   newToAnimate.animate(keyframes, options);
-  console.log("new");
+  //console.log("new");
 }
 
 

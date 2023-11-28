@@ -1,4 +1,4 @@
-"use strict"
+/* "use strict"
 const pierre = document.querySelector(".pierre img")
 const papier = document.querySelector(".papier img")
 const cisseau = document.querySelector(".cisseau img")
@@ -103,3 +103,127 @@ function popup(text) {
     }, 3000);
 }
 
+ */
+
+export default class Game {
+    constructor() {
+        this.elements = [
+            { name: "pierre", imageSrc: "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/pierre.jpg" },
+            { name: "ciseau", imageSrc: "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main//ciseau.jpeg" },
+            { name: "papier", imageSrc: "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/papier.jpg" }
+        ];
+
+        this.playerChoice = null;
+        this.computerChoice = null;
+        this.gameContainer = this.createGameContainer();
+        this.versusImage = this.createVersusImage();
+        this.resetButton = null;
+
+        this.setupGame();
+    }
+
+    createGameContainer() {
+        const container = document.createElement("div");
+        container.className = "boite";
+        document.body.appendChild(container);
+        return container;
+    }
+
+    createVersusImage() {
+        const image = document.createElement("img");
+        image.className = "img5"
+        image.src = "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/versus.jpg";
+        image.alt = "";
+        const versusContainer = document.createElement("div");
+        versusContainer.className = "versus";
+        versusContainer.appendChild(image);
+        this.gameContainer.appendChild(versusContainer);
+        return image;
+    }
+
+    createElement(elementData) {
+        const container = document.createElement("div");
+        container.className = "div5"
+        container.className = elementData.name;
+
+        const image = document.createElement("img");
+        image.className = "img5"
+        image.src = elementData.imageSrc;
+        image.alt = "";
+
+        const button = document.createElement("button");
+        button.className = "button5"
+        button.className = `click ${elementData.name}`;
+        button.textContent = elementData.name.charAt(0).toUpperCase() + elementData.name.slice(1);
+
+        container.appendChild(image);
+        container.appendChild(button);
+
+        return container;
+    }
+
+    setupGame() {
+        this.elements.forEach(elementData => {
+            const elementNode = this.createElement(elementData);
+            const button = elementNode.querySelector("button");
+            button.addEventListener("click", () => this.play(elementData.name));
+            this.gameContainer.appendChild(elementNode);
+        });
+    }
+
+    play(playerChoice) {
+        this.playerChoice = playerChoice;
+        this.hideButtons();
+        this.computerChoice = this.getRandomElement();
+        this.showVersusImage();
+        this.determineWinner();
+        this.showResetButton();
+    }
+
+    getRandomElement() {
+        const randomIndex = Math.floor(Math.random() * this.elements.length);
+        return this.elements[randomIndex].name;
+    }
+
+    hideButtons() {
+        this.elements.forEach(elementData => {
+            const button = this.gameContainer.querySelector(`.${elementData.name} button`);
+            button.style.display = "none";
+        });
+    }
+
+    showVersusImage() {
+        this.versusImage.style.display = "block";
+    }
+
+    determineWinner() {
+        // Implementation of winner determination logic
+        // ...
+
+        // Example: Displaying the result in the console
+        console.log(`Player: ${this.playerChoice}, Computer: ${this.computerChoice}`);
+    }
+
+    showResetButton() {
+        this.resetButton = document.createElement("button");
+        this.resetButton.className = "button5"
+        this.resetButton.textContent = "Rejouer";
+        this.resetButton.addEventListener("click", () => this.resetGame());
+        document.body.appendChild(this.resetButton);
+    }
+
+    resetGame() {
+        this.elements.forEach(elementData => {
+            const button = this.gameContainer.querySelector(`.${elementData.name} button`);
+            button.style.display = "block";
+        });
+
+        this.versusImage.style.display = "none";
+        this.playerChoice = null;
+        this.computerChoice = null;
+
+        if (this.resetButton) {
+            this.resetButton.remove();
+        }
+    }
+}
