@@ -36,6 +36,7 @@ export default class Imane extends HTMLElement
         btnStyle.width = "20px"
         btnStyle.backgroundColor ="red"
         btnStyle.color = "white"
+        btnStyle.zIndex = "99"
 
         this.btn.addEventListener('click',this.AnimBack.bind(this))
     }

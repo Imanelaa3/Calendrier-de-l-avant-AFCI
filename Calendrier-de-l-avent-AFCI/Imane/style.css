@@ -62,5 +62,8 @@ button{
 .b5{grid-area: 1/3/3/4}
 .b24{grid-area: 1/5/3/7}
 
+template{
+    padding: 50px;
+}
 
 

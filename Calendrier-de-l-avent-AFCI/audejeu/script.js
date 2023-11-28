@@ -203,54 +203,63 @@
 
 export default class SantaGame {
   constructor() {
-    
-      // Création des éléments HTML
-      this.gameAudio = document.createElement("audio");
-      this.gameAudio.id = "gameAudio";
-      this.gameAudio.loop = true;
-      this.gameAudio.preload = "auto";
-  
-      const audioSource = document.createElement("source");
-      audioSource.src = "music.mp3";
-      audioSource.type = "audio/mp3";
-  
-      this.gameAudio.appendChild(audioSource);
-  
-      this.gameContainer = document.createElement("div");
-      this.gameContainer.className = "game-container";
-  
-      this.santa = document.createElement("div");
-      this.santa.className = "santa";
-  
-      this.gift = document.createElement("div");
-      this.gift.className = "gift";
-  
-      this.gameContainer.appendChild(this.santa);
-      this.gameContainer.appendChild(this.gift);
-  
-      this.scoreDisplay = document.createElement("div");
-      this.scoreDisplay.className = "score";
-      this.scoreDisplay.textContent = "Score: 0";
-  
-      this.gameOverMessage = document.createElement("div");
-      this.gameOverMessage.className = "game-over-message";
-      this.gameOverMessage.style.display = "none";
-      this.gameOverMessage.textContent = "Game Over!";
-  
-      // Ajout des éléments au DOM
-      document.body.appendChild(this.gameAudio);
-      document.body.appendChild(this.gameContainer);
-      document.body.appendChild(this.scoreDisplay);
-      document.body.appendChild(this.gameOverMessage);
+    // Création des éléments HTML
+    this.gameAudio = document.createElement("audio");
+    this.gameAudio.id = "gameAudio";
+    this.gameAudio.loop = true;
+    this.gameAudio.preload = "auto";
+
+    const audioSource = document.createElement("source");
+    audioSource.src = "music.mp3";
+    audioSource.type = "audio/mp3";
+
+    this.gameAudio.appendChild(audioSource);
+
+    this.gameContainer = document.createElement("div");
+    this.gameContainer.className = "game-container";
+
+    this.santa = document.createElement("div");
+    this.santa.className = "santa";
+
+    this.gift = document.createElement("div");
+    this.gift.className = "gift";
+
+    this.gameContainer.appendChild(this.santa);
+    this.gameContainer.appendChild(this.gift);
+
+    this.scoreDisplay = document.createElement("div");
+    this.scoreDisplay.className = "score";
+    this.scoreDisplay.textContent = "Score: 0";
+
+    this.gameOverMessage = document.createElement("div");
+    this.gameOverMessage.className = "game-over-message";
+    this.gameOverMessage.style.display = "none";
+    this.gameOverMessage.textContent = "Game Over!";
+    this.container = document.createElement("div");
+    // Ajout des éléments au DOM
+    this.container.appendChild(this.gameAudio);
+    this.container.appendChild(this.gameContainer);
+    this.container.appendChild(this.scoreDisplay);
+    this.container.appendChild(this.gameOverMessage);
 
     // Initialisation des variables
     this.score = 0;
-    this.initialGiftSpeed = parseFloat(localStorage.getItem("initialGiftSpeed")) || 2;
+    this.initialGiftSpeed =
+      parseFloat(localStorage.getItem("initialGiftSpeed")) || 2;
     this.giftSpeed = this.initialGiftSpeed;
     this.gameRunning = true;
 
     // Attacher les méthodes aux événements
     document.addEventListener("DOMContentLoaded", () => this.init());
+    document.addEventListener("keydown", (event) => this.santaMove(event));
+    document.addEventListener("touchstart", (event) => this.touchStart(event));
+    document.addEventListener("touchmove", (event) => this.touchMove(event));
+    this.santa.addEventListener("mousedown", (event) => this.mouseDown(event));
+    document.addEventListener("mousemove", (event) => this.mouseMove(event));
+    document.addEventListener("mouseup", () => this.mouseUp());
+
+    //initialiser le jeu
+    this.init();
   }
 
   init() {
@@ -262,7 +271,8 @@ export default class SantaGame {
   }
 
   startMusic() {
-    this.gameAudio.play()
+    this.gameAudio
+      .play()
       .then(() => {
         // Retire l'écouteur d'événements après le démarrage de la musique
         document.body.removeEventListener("click", () => this.startMusic());
@@ -276,7 +286,8 @@ export default class SantaGame {
 
   displayInteractionMessage() {
     const message = document.createElement("div");
-    message.textContent = "Cliquez n'importe où sur la page pour commencer la musique";
+    message.textContent =
+      "Cliquez n'importe où sur la page pour commencer la musique";
     message.style.position = "fixed";
     message.style.top = "50%";
     message.style.left = "50%";
@@ -285,17 +296,73 @@ export default class SantaGame {
     message.style.padding = "20px";
     message.style.border = "1px solid #000";
 
-    document.body.appendChild(message);
+    this.container.appendChild(message);
 
     // Ajoute un écouteur d'événements pour démarrer la musique lors de la première interaction utilisateur (clic)
-    document.body.addEventListener("click", function () {
+    document.body.addEventListener("click",  () =>{
       this.gameAudio.play();
       document.body.removeChild(message);
     });
   }
-  
 
   // Vous pouvez organiser les autres fonctions de votre code ici, telles que moveGift, resetGift, endGame, etc.
+  santaMove(event) {
+    if (!this.gameRunning) return;
+
+    const santaLeft = parseFloat(this.santa.style.left) || 50;
+
+    if (event.key === "ArrowLeft" && santaLeft > 0) {
+      this.santa.style.left = santaLeft - 10 + "px";
+    } else if (
+      event.key === "ArrowRight" &&
+      santaLeft < window.innerWidth - this.santa.clientWidth
+    ) {
+      this.santa.style.left = santaLeft + 10 + "px";
+    }
+  }
+
+  touchStart(event) {
+    if (!this.gameRunning) return;
+
+    this.touchStartX = event.touches[0].clientX;
+  }
+
+  touchMove(event) {
+    if (!this.gameRunning) return;
+
+    const touchEndX = event.touches[0].clientX;
+
+    if (touchEndX < this.touchStartX) {
+      const santaLeft = parseFloat(this.santa.style.left) || 50;
+      if (santaLeft > 0) {
+        this.santa.style.left = santaLeft - 10 + "px";
+      }
+    } else if (touchEndX > this.touchStartX) {
+      const santaLeft = parseFloat(this.santa.style.left) || 50;
+      if (santaLeft < window.innerWidth - this.santa.clientWidth) {
+        this.santa.style.left = santaLeft + 10 + "px";
+      }
+    }
+  }
+
+  mouseDown(event) {
+    if (!this.gameRunning) return;
+
+    this.isMouseDown = true;
+  }
+
+  mouseMove(event) {
+    if (!this.gameRunning || !this.isMouseDown) return;
+
+    const santaLeft = event.clientX - this.santa.clientWidth / 2;
+    if (santaLeft > 0 && santaLeft < window.innerWidth - this.santa.clientWidth) {
+      this.santa.style.left = santaLeft + "px";
+    }
+  }
+
+  mouseUp() {
+    this.isMouseDown = false;
+  }
 
   // Exemple de méthode de déplacement du cadeau
   moveGift() {
@@ -330,7 +397,9 @@ export default class SantaGame {
   resetGift() {
     if (!this.gameRunning) return;
 
-    const randomLeft = Math.floor(Math.random() * (window.innerWidth - this.gift.clientWidth));
+    const randomLeft = Math.floor(
+      Math.random() * (window.innerWidth - this.gift.clientWidth)
+    );
     this.gift.style.left = randomLeft + "px";
     this.gift.style.top = "0";
 
@@ -347,10 +416,14 @@ export default class SantaGame {
 
     if (this.score > highScore) {
       localStorage.setItem("highScore", this.score);
-      gameOverMessage.textContent = "Félicitations ! Nouveau record : " + this.score;
+      gameOverMessage.textContent =
+        "Félicitations ! Nouveau record : " + this.score;
     } else {
       this.gameOverMessage.textContent =
-        "Game Over. Votre score : " + this.score + " | Meilleur score : " + highScore;
+        "Game Over. Votre score : " +
+        this.score +
+        " | Meilleur score : " +
+        highScore;
     }
 
     this.score = 0;
@@ -358,7 +431,11 @@ export default class SantaGame {
 
     this.gameOverMessage.style.display = "block";
 
-    this.gameAudio.pause();
+    //this.gameAudio.pause();
+
+    document.addEventListener('click',this.init.bind(this))
+
+    
   }
 
   // Exemple de méthode de réinitialisation du jeu
@@ -380,4 +457,4 @@ export default class SantaGame {
 }
 
 // Instancier l'objet SantaGame
-const santaGame = new SantaGame();
+// const santaGame = new SantaGame();

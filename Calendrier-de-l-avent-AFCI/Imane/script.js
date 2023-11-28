@@ -2,7 +2,7 @@
 
 //-----------Import-----------------
 import Imane from "./imane.js";
-import aude from '../audejeu/script.js'
+// import aude from '../audejeu/script.js'
 
 //----------------B1------------------
 
@@ -47,20 +47,22 @@ buttons.forEach((button) => {
         baliseAnim.style.display === "none" ||
         baliseAnim.style.display === ""
       ) {
-        console.log(listImport[day],day);
+        console.log(listImport[day], day);
         const import1 = await import(listImport[day].file);
         console.log(import1);
         const anim = new import1.default();
         // console.log(anim);
         const template = document.querySelector(listImport[day].template);
         if (template) {
-            console.log('template');
+          console.log("template");
           baliseAnim.append(template.content);
         }
         if (anim.canvas) {
           baliseAnim.append(anim.canvas);
         } else if (anim instanceof HTMLElement) {
           baliseAnim.append(anim);
+        } else if (anim.container) {
+          baliseAnim.append(anim.container);
         }
 
         baliseAnim.append(anim.canvas);
