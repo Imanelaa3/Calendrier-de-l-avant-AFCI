@@ -1,59 +1,58 @@
 "use strict";
 //content:
 const h1 = document.createElement('h1');
-h1.textContent = "Christmas Hot Chocolat 🍫";
+h1.textContent = "Chocolat chaud de Noël 🍫";
 document.body.append(h1);
 
 const p6 = document.createElement('p');
-p6.textContent = "Christmas tradition is drinking delicious hot chocolate. I think, it's pretty nice! So let's do it with you together. You need just 3 ingredients and good mood :)";
+p6.textContent = "La tradition de Noël consiste à boire un délicieux chocolat chaud. Je pense que c'est plutôt sympa ! Alors faisons-le avec vous ensemble. Vous n'avez besoin que de 3 ingrédients :)";
 document.body.append(p6);
 
 const h2 = document.createElement('h2');
-h2.textContent = "Ingredients:";
+h2.textContent = "INGRÉDIENTS:";
 document.body.append(h2);
 
 const li = document.createElement('li');
-li.textContent = "70 g dark chocolate (70% cocoa)";
+li.textContent = "70 g de chocolat noir (70% de cacao)";
 document.body.append(li);
 
 const li2 = document.createElement('li');
-li2.textContent = "160 ml milk";
+li2.textContent = "160 ml de lait";
 document.body.append(li2);
 
 const li3 = document.createElement('li');
-li3.textContent = "1 tbsp. brown sugar";
+li3.textContent = "1 cuillère à soupe de cassonade";
 document.body.append(li3);
 
 const li4 = document.createElement('li');
-li4.textContent = "One or two of your favorite topping(s): whipped cream, or candy canes, or marshmellows, or cinnamon, or more chocolate";
+li4.textContent = "Une ou deux de vos garnitures préférées: crème fouettée, ou cannes de bonbon, ou guimauves, ou cannelle, ou plus de chocolat";
 document.body.append(li4);
 
 const h22 = document.createElement('h3');
-h22.textContent = "How to make it:";
+h22.textContent = "PRÉPARATION:";
 document.body.append(h22);
 
 const p = document.createElement('p');
-p.textContent = "1. Break the chocolate into small pieces.";
+p.textContent = "1. Cassez le chocolat noir en carrés.";
 document.body.append(p);
 
 const p2 = document.createElement('p');
-p2.textContent = "2. Pour the milk into a saucepan.  Heat over low heat.  When the milk is hot, add the chocolate and mix with kitchen whisk.  Cook until the chocolate is completely dissolved.";
+p2.textContent = "2. Versez le lait dans une casserole. Chauffer à feu doux. Lorsque le lait est chaud, ajoutez le chocolat et mélangez au fouet de cuisine. Cuire jusqu'à ce que le chocolat soit complètement dissous.";
 document.body.append(p2);
 
 const p3 = document.createElement('p');
-p3.textContent = "3. Add sugar, bring milk to a near boil (don't boil!) And pour into warmed cups.";
+p3.textContent = "3. Ajoutez le sucre, portez le lait à ébullition (ne faites pas bouillir !) et versez dans des tasses.";
 document.body.append(p3);
 
 const p4 = document.createElement('p');
-p4.textContent = "4. Top with your favorite hot chocolate toppings like whipped cream, or candy canes, or marshmellows, or cinnamon, or more chocolate, of course!";
+p4.textContent = "4. Garnissez de vos garnitures de chocolat chaud préférées comme de la crème fouettée, des cannes de bonbon, des guimauves, de la cannelle ou encore du chocolat, bien sûr!";
 document.body.append(p4);
 
 const p5 = document.createElement('p');
-p5.textContent = "On your favorite Christmas playlist, take your soft cozy plaid and enjoy your hot chocolate. Do you feel that Christmas vibes in the air?";
+p5.textContent = "En écoutant votre playlist préféré, prenez votre doux et confortable plaid et dégustez votre chocolat chaud. Sentez-vous l'atmosphère du Noël dans l'air ?";
 document.body.append(p5);
 
 document.body.style.background = "lightpink";
-//document.body.style.backgroundImage = "url('santapng.png')";
 
 const img = document.createElement("img")
 img.setAttribute("src", "christmas_hot_chocolat.jpg")
