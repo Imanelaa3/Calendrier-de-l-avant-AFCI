@@ -210,7 +210,7 @@ export default class SantaGame {
     this.gameAudio.preload = "auto";
 
     const audioSource = document.createElement("source");
-    audioSource.src = "music.mp3";
+    audioSource.src = "../../Calendrier-de-l-avent-AFCI/audejeu/music.mp3";
     audioSource.type = "audio/mp3";
 
     this.gameAudio.appendChild(audioSource);
@@ -301,7 +301,7 @@ export default class SantaGame {
     // Ajoute un écouteur d'événements pour démarrer la musique lors de la première interaction utilisateur (clic)
     document.body.addEventListener("click",  () =>{
       this.gameAudio.play();
-      document.body.removeChild(message);
+      //document.body.removeChild(message);
     });
   }
 

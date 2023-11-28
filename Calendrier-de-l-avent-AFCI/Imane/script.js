@@ -2,7 +2,10 @@
 
 //-----------Import-----------------
 import Imane from "./imane.js";
-// import aude from '../audejeu/script.js'
+import Dylan from "../../dylan/Calendrier-de-l-avent-AFCI/Imane/dylan.js"
+import Dylan2 from "../../dylan/Calendrier-de-l-avent-AFCI/Imane/dylan2.js"
+
+
 
 //----------------B1------------------
 
@@ -13,8 +16,8 @@ const currentDate = new Date();
 const listImport = {
   1: { file: "./ImaneAnim.js" },
   2: { file: "../audejeu/script.js", template: "#aude" },
-  3: "",
-  4: "",
+  3: {file:"../../dylan/Calendrier-de-l-avent-AFCI/Imane/dylan.js",template:"#dylan"},
+  4: {file:"../../dylan/Calendrier-de-l-avent-AFCI/Imane/dylan2.js",template:'#dylan2'},
   5: "",
   6: "",
   7: "",
@@ -51,8 +54,11 @@ buttons.forEach((button) => {
         const import1 = await import(listImport[day].file);
         console.log(import1);
         const anim = new import1.default();
-        // console.log(anim);
+        
         const template = document.querySelector(listImport[day].template);
+        
+       
+
         if (template) {
           console.log("template");
           baliseAnim.append(template.content);
@@ -107,5 +113,7 @@ function animationNew() {
   newToAnimate.animate(keyframes, options);
   console.log("new");
 }
+
+
 
 //function import (voir cours)

@@ -41,12 +41,22 @@ export default class Imane extends HTMLElement
         this.btn.addEventListener('click',this.AnimBack.bind(this))
     }
 
-    AnimBack()
-    {
-        if(this.style.display === "block")
-            this.style.display = "none"
-            console.log('oui');
-    }
+    AnimBack() {
+        if (this.style.display === "block") {
+          this.textContent = "";
+          this.style.display = "none";
+          console.log("oui");
+        }
+      }
+    attributeChangedCallback(name, old, now) {
+        if (now.includes("display: none")) {
+          console.log(this.btn);
+          this.append(this.btn);
+        }
+      }
+      static get observedAttributes() {
+        return ["style"];
+      }
 }
 
 customElements.define("balise-animation",Imane)
