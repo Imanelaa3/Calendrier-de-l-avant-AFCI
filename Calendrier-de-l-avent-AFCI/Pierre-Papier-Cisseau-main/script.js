@@ -107,7 +107,7 @@ function popup(text) {
 
 export default class Game {
   constructor() {
-    this.elements = [
+    (this.elements = [
       {
         name: "pierre",
         imageSrc:
@@ -123,104 +123,202 @@ export default class Game {
         imageSrc:
           "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/papier.jpg",
       },
-    ],
-    this.clone=null
+    ]),
+      (this.clone = null);
     //creation boite
-    this.container = document.createElement('div')
-    this.container.className='boite'
+    this.container = document.createElement("div");
+    this.container.className = "boite";
+
+    this.boitePierre = document.createElement("div");
+    this.boitePierre.className = "pierre";
+    this.boitePapier = document.createElement("div");
+    this.boitePapier.className = "papier";
+    this.boiteCiseau = document.createElement("div");
+    this.boiteCiseau.className = "cisseau";
     //creation image versus
-    this.versus=document.createElement('img')
-    this.versus.className='img5'
-    this.versus.src="../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/versus.jpg";
+    this.versus = document.createElement("img");
+    this.versus.className = "img5";
+    this.versus.src =
+      "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/versus.jpg";
     //creation boutton pierre feuille cisseaux
-    this.buttonC = document.createElement('button')
-    this.buttonC.className ="click3"
-    this.buttonC.textContent ="Cisseau"
+    this.buttonC = document.createElement("button");
+    this.buttonC.className = "click";
+    this.buttonC.textContent = "Cisseau";
     this.cisseau = document.createElement("img");
-    this.cisseau.src = this.elements[2].imageSrc;
-    this.buttonP = document.createElement('button')
-    this.buttonP.className ="click1"
-    this.buttonP.textContent ="Pierre"
+    this.cisseau.className = "img5";
+    this.cisseau.src = this.elements[1].imageSrc;
+
+    this.buttonP = document.createElement("button");
+    this.buttonP.className = "click";
+    this.buttonP.textContent = "Pierre";
     this.pierre = document.createElement("img");
-    this.pierre.src = this.elements[1].imageSrc;
-    this.buttonF = document.createElement('button')
-    this.buttonF.className ="click2"
-    this.buttonF.textContent ="Feuille"
+    this.pierre.className = "img5";
+    this.pierre.src = this.elements[0].imageSrc;
+
+    this.buttonF = document.createElement("button");
+    this.buttonF.className = "click";
+    this.buttonF.textContent = "Feuille";
     this.papier = document.createElement("img");
-    //this.papier.src = this.elements[3].imageSrc;
+    this.papier.className = "img5";
+    this.papier.src = this.elements[2].imageSrc;
     //creation button rejouer
-    this.rejouer=document.createElement('button')
-    this.rejouer.className ="button5"
-    this.rejouer.textContent="Rejouer"
+    this.rejouer = document.createElement("button");
+    this.rejouer.className = "button5";
+    this.rejouer.textContent = "Rejouer";
 
-    //ajout des element au dom 
-    this.container.appendChild(this.versus)
-    this.container.appendChild(this.buttonC)
-    this.container.appendChild(this.buttonF)
-    this.container.appendChild(this.buttonP)
-    this.container.appendChild(this.rejouer)
-    
+    //ajout des element au dom
+    this.boitePierre.append(this.pierre, this.buttonP);
+    this.boitePapier.append(this.papier, this.buttonF);
+    this.boiteCiseau.append(this.cisseau, this.buttonC);
+    this.container.append(
+      this.boiteCiseau,
+      this.boitePapier,
+      this.boitePierre,
+      this.rejouer,
+      this.versus
+    );
+
     //ajout methode aux evvent
-    this.buttonC.addEventListener('click', this.playGame.bind(this))
-    this.buttonP.addEventListener('click', this.playGame.bind(this))
-    this.buttonF.addEventListener('click', this.playGame.bind(this))
-    this.rejouer.addEventListener('click', this.resetGame.bind(this))
+    this.buttonC.addEventListener("click", () => {
+      this.cisseau.style.display = "block";
+      this.versus.style.display = "block";
 
-    this.initGame()
+      this.choix = "ciseau";
+      this.playGame();
+      this.gamePlay();
+      return this.choix;
+    });
+    this.buttonP.addEventListener("click", () => {
+      this.pierre.style.display = "block";
+      this.versus.style.display = "block";
+      this.choix = "pierre";
+      this.playGame();
+      this.gamePlay();
+      return this.choix;
+    });
+    this.buttonF.addEventListener("click", () => {
+      this.papier.style.display = "block";
+      this.versus.style.display = "block";
+      this.choix = "papier";
+      this.playGame();
+      this.gamePlay();
+      return this.choix;
+    });
+    this.rejouer.addEventListener("click", this.resetGame.bind(this));
+
+    this.initGame();
   }
 
-  initGame(){
-    this.debut = document.createElement('p')
-    this.debut.textContent = " a toi de jouer choisi la pierre le paiper ou le cisseau"
-    this.debut.style.dsiplay =""
-    this.container.appendChild(this.debut)
-    this.rejouer.style.display ="none"
+  initGame() {
+    this.debut = document.createElement("p");
+    this.debut.textContent =
+      " A toi de jouer choisi la pierre le papier ou le cisseau";
+    this.debut.className = "message"
+    this.container.appendChild(this.debut);
+    this.rejouer.style.display = "none";
   }
-
-playGame(){
-    this.choixOrdi()
-    console.log(this.choixOrdi);
-    const img = document.createElement("img");
-    img.style.display = "block";
+/**
+ * fonction qui permet d'ffacer les buton lors du jeu
+ */
+  playGame() {
+    // this.choixOrdi();
+    // const img = document.createElement("img");
+    // img.style.display = "block";
     this.buttonC.style.display = "none";
     this.buttonF.style.display = "none";
     this.buttonP.style.display = "none";
-    this.rejouer.style.display = ""
-    this.debut.remove()
-}
-
-choixOrdi(){
+    this.rejouer.style.display = "";
+    this.debut.remove();
+  }
+/**
+ * fonction du choix de l'ordi
+ * @returns le choix de l'ordi en string
+ */
+  choixOrdi() {
     const choix = ["pierre", "papier", "cisseau"];
     const x = Math.floor(Math.random() * 3);
-    let parent  
+    let parent;
+    console.log(choix[x]);
     switch (choix[x]) {
-        case "pierre":
-            
-            parent = this.pierre
-            this.clone = this.pierre.cloneNode()
-            
-            break;
-        case "papier":
-            parent = this.papier
-            this.clone = this.papier.cloneNode()
-            
-            break;
-        case "cisseau":
-            parent = this.cisseau
-            this.clone = this.cisseau.cloneNode()
-            
-            break;
-    
-        default:
-            break;
+      case "pierre":
+        parent = this.pierre;
+        this.clone = this.pierre.cloneNode();
+        this.container.append(this.clone);
+        this.clone.style.display = "block";
+        return "pierre";
+        break;
+      case "papier":
+        parent = this.papier;
+        this.clone = this.papier.cloneNode();
+        this.container.append(this.clone);
+        this.clone.style.display = "block";
+        return "papier";
+        break;
+      case "cisseau":
+        parent = this.cisseau;
+        this.clone = this.cisseau.cloneNode();
+        this.clone.style.display = "block";
+        this.container.append(this.clone);
+        return "ciseau";
+
+        break;
+
+      default:
+        break;
     }
+  }
 
-}
+  popup(text) {
+    let message = document.createElement("h3");
+    message.className = "message";
+    message.textContent = text;
+    this.container.appendChild(message);
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
+  }
+/**
+ * fonction qui permet d'elir le vainqueur
+ */
+  gamePlay() {
+    const gagner = "Gagné :)";
+    const perdu = "Perdu :(";
+    const egalité = "Egalité :|";
+    const ia = this.choixOrdi();
+    console.log(ia, this.choix);
 
-  resetGame(){
-   this.initGame()
-   this.buttonC.style.display =""
-   this.buttonF.style.display =""
-   this.buttonP.style.display =""
-}
+    if (this.choix === ia) {
+      this.popup(egalité);
+    }
+    if (this.choix == "ciseau" && ia == "papier") {
+      this.popup(gagner);
+    }
+    if (this.choix == "ciseau" && ia == "pierre") {
+      this.popup(perdu);
+    }
+    if (this.choix == "papier" && ia == "pierre") {
+      this.popup(gagner);
+    }
+    if (this.choix == "papier" && ia == "ciseau") {
+      this.popup(perdu);
+    }
+    if (this.choix == "pierre" && ia == "ciseau") {
+      this.popup(gagner);
+    }
+    if (this.choix == "pierre" && ia == "papier") {
+      this.popup(perdu);
+    }
+  }
+
+  resetGame() {
+    this.initGame();
+    this.buttonC.style.display = "";
+    this.buttonF.style.display = "";
+    this.buttonP.style.display = "";
+    this.cisseau.style.display = "none";
+    this.pierre.style.display = "none";
+    this.papier.style.display = "none";
+    this.versus.style.display = "none";
+    this.clone.remove();
+  }
 }

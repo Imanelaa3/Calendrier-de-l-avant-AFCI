@@ -2,20 +2,28 @@
 
 .boite
 {
+    
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 30px;
+    justify-content: space-evenly;
+
 
 }
-.div5{
+.div{
     display: flex;
     flex-direction: row;
 }
 .click
 {
-    background-color: black;
+    background-color: rgb(207, 13, 13);
     color: aliceblue;
+    height: 30px;
+    width: 70px;
+    font-size: 1rem;
+
 }
 .img5
 {
@@ -35,11 +43,13 @@
     background-color: rgb(223, 62, 62);
     color: aliceblue;
     position: absolute;
-    top: 90vh;
+    top: 50vh;
+    position: fixed;
     width: 100%;
     height: 50px;
     font-size: 50px;
     font-family: 'Ephesis', cursive;
+    text-align: center;
 }
 .button5{
     border-radius: 50%;
@@ -51,6 +61,8 @@
     margin-left: 100px;
     margin-right: 100px;
     margin-top: 130px;
+    position: fixed;
+    bottom: 20vh;
 }
 #titrePPC
 {
