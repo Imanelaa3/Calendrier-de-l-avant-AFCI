@@ -17,7 +17,7 @@ const listImport = {
   3: { file: "../../dylan/dylan.js", template: "#dylan" },
   4: { file: "../../dylan/dylan2.js", template: "#dylan2" },
   5: { file: "../Pierre-Papier-Cisseau-main/script.js", template: "#faissal" },
-  6: "",
+  6: {file:"../../taquin/taquin.js",template:"aude2"},
   7: "",
   8: "",
   9: "",
