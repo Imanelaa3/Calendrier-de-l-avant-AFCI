@@ -119,7 +119,7 @@ const styles = /* CSS */ `
         padding: 10px;
         box-shadow: 2px 2px 5px black;
         overflow: hidden;
-        background: url(./img/fondNoel2.jpg) bottom no-repeat;
+        background: url(../../tim/img/fondNoel2.jpg) bottom no-repeat;
     }
 
     .settingsContainer {
@@ -185,10 +185,10 @@ const styles = /* CSS */ `
 `;
 
 
-class ChristmasCalendar {
+export default class ChristmasCalendar {
   constructor() {
     // modal
-    this.body = document.querySelector("body");
+    this.container = document.createElement('div')
     this.modalContainer = document.createElement("div");
     this.modal = document.createElement("modal");
     this.closeButton = document.createElement("button");
@@ -198,7 +198,9 @@ class ChristmasCalendar {
     this.modalTriggers = document.querySelectorAll(".modal-trigger");
     // this.closeButton = document.querySelector(".close-modal");
     this.isAnimating = false;
-    this.backgroundMusic = document.getElementById("backgroundMusic");
+    this.backgroundMusic = document.createElement('source')
+    this.backgroundMusic.src ='../../tim/audio/je te souhaite joyeux noel (1).mp3'
+    this.backgroundMusic.type = "audio/mp3"
 
 
     // Game
@@ -231,16 +233,16 @@ class ChristmasCalendar {
   }
 
   createStyles() {
-    this.body.style.height = "100vh";
+    //this.body.style.height = "100vh";
 
     const styleElement = document.createElement("style");
     styleElement.innerHTML = styles;
-    this.body.append(styleElement);
+    this.container.append(styleElement);
   }
 
   createModal() {
     this.modalContainer.className = "modal-container";
-    this.body.append(this.modalContainer);
+    this.container.append(this.modalContainer);
 
     this.modal.className = "modal";
     this.modalContainer.append(this.modal);
@@ -254,7 +256,7 @@ class ChristmasCalendar {
   createButton() {
     this.buttonCase.className = "button";
     this.buttonCase.classList.add("modal-btn", "modal-trigger");
-    this.body.append(this.buttonCase);
+    this.container.append(this.buttonCase);
   }
 
   // createNumber() {
@@ -276,10 +278,10 @@ class ChristmasCalendar {
       this.modalContainer.classList.remove("active");
       this.buttonCase.style.display = "block";
       // Include logic to pause background music
-      this.backgroundMusic.pause();
+      //todothis.backgroundMusic.pause();
     });
 
-    this.stopMusic.addEventListener("click", () => {
+    /*todo this.stopMusic.addEventListener("click", () => {
       if (this.backgroundMusic.paused) {
         // Si on met la musique est en pause, on appuye sur le bouton pour la jouer
         this.stopMusic.textContent = "stop music";
@@ -290,7 +292,7 @@ class ChristmasCalendar {
         this.backgroundMusic.pause();
       }
     });
-
+ */
     this.startRestart.addEventListener("click", () => {
       this.handleRestartButtonClick();
     })
@@ -316,7 +318,7 @@ class ChristmasCalendar {
       this.buttonCase.style.display = "none";
       this.modalContainer.classList.add("active");
       // Include logic to play background music
-      backgroundMusic.play();
+      //todo backgroundMusic.play();
     }, 0);
   }
 
@@ -333,7 +335,7 @@ class ChristmasCalendar {
       // 8000 ms: temps pour ajuster la transition de la musique avec les portes
       setTimeout(() => {
         // jouer la musique
-        backgroundMusic.play();
+        //todo backgroundMusic.play();
       }, 8000);
     }
     // Start playing background music when the transition ends
@@ -424,8 +426,8 @@ class ChristmasCalendar {
       return img;
     }
 
-    let cible = createImage.call(this, "./img/cadeau.jpg", "cible");
-    let pereNoel = createImage.call(this, "./img/pereNoel.jpg", "pereNoel");
+    let cible = createImage.call(this, "../../tim/img/cadeau.jpg", "cible");
+    let pereNoel = createImage.call(this, "../../tim/img/pereNoel.jpg", "pereNoel");
 
     // Hide images after a certain time
     setTimeout(() => {
@@ -468,8 +470,8 @@ class ChristmasCalendar {
     pereNoel.style.display = "none";
     this.scoreSpan.textContent = `Score: ${this.score}`;
   }
-
+  
 }
 
 // Instantiate the ChristmasCalendar class
-const christmasCalendarInstance = new ChristmasCalendar();
+//christmasCalendarInstance = new ChristmasCalendar();
