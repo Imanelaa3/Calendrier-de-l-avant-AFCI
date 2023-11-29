@@ -12,10 +12,10 @@
 
 
 }
-.div{
+/* div{
     display: flex;
     flex-direction: row;
-}
+} */
 .click
 {
     background-color: rgb(207, 13, 13);
@@ -31,12 +31,13 @@
     width: 50vh;
     display: none;
 }
-.versus img
+.versus
 {
     height: 50px;
     width: 50px;
     align-items: center;
     justify-content: center;
+    border-radius: 30px;
 }
 .message
 {
@@ -87,15 +88,25 @@ color: aliceblue;
     .boite{
         display: flex ;
         flex-direction: column;
+        
     }
-    img{
+    .img5{
         height: 150px;
         width: 150px;
     }
-    button{
+    .button5{
         margin-top: 60px;
         margin-bottom: 60px;
         height: 80px;
         width: 80px;
+    }
+    .message{
+
+        font-size: smaller;
+        position: fixed;
+        top:90vh
+    }
+    .button5{
+        bottom: 5vh;
     }
 }
