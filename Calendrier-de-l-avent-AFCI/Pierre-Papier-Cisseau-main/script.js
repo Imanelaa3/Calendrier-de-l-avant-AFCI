@@ -106,125 +106,121 @@ function popup(text) {
  */
 
 export default class Game {
-    constructor() {
-        this.elements = [
-            { name: "pierre", imageSrc: "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/pierre.jpg" },
-            { name: "ciseau", imageSrc: "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main//ciseau.jpeg" },
-            { name: "papier", imageSrc: "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/papier.jpg" }
-        ];
+  constructor() {
+    this.elements = [
+      {
+        name: "pierre",
+        imageSrc:
+          "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/pierre.jpg",
+      },
+      {
+        name: "ciseau",
+        imageSrc:
+          "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/ciseau.jpg",
+      },
+      {
+        name: "papier",
+        imageSrc:
+          "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/papier.jpg",
+      },
+    ],
+    this.clone=null
+    //creation boite
+    this.container = document.createElement('div')
+    this.container.className='boite'
+    //creation image versus
+    this.versus=document.createElement('img')
+    this.versus.className='img5'
+    this.versus.src="../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/versus.jpg";
+    //creation boutton pierre feuille cisseaux
+    this.buttonC = document.createElement('button')
+    this.buttonC.className ="click3"
+    this.buttonC.textContent ="Cisseau"
+    this.cisseau = document.createElement("img");
+    this.cisseau.src = this.elements[2].imageSrc;
+    this.buttonP = document.createElement('button')
+    this.buttonP.className ="click1"
+    this.buttonP.textContent ="Pierre"
+    this.pierre = document.createElement("img");
+    this.pierre.src = this.elements[1].imageSrc;
+    this.buttonF = document.createElement('button')
+    this.buttonF.className ="click2"
+    this.buttonF.textContent ="Feuille"
+    this.papier = document.createElement("img");
+    //this.papier.src = this.elements[3].imageSrc;
+    //creation button rejouer
+    this.rejouer=document.createElement('button')
+    this.rejouer.className ="button5"
+    this.rejouer.textContent="Rejouer"
 
-        this.playerChoice = null;
-        this.computerChoice = null;
-        this.gameContainer = this.createGameContainer();
-        this.versusImage = this.createVersusImage();
-        this.resetButton = null;
+    //ajout des element au dom 
+    this.container.appendChild(this.versus)
+    this.container.appendChild(this.buttonC)
+    this.container.appendChild(this.buttonF)
+    this.container.appendChild(this.buttonP)
+    this.container.appendChild(this.rejouer)
+    
+    //ajout methode aux evvent
+    this.buttonC.addEventListener('click', this.playGame.bind(this))
+    this.buttonP.addEventListener('click', this.playGame.bind(this))
+    this.buttonF.addEventListener('click', this.playGame.bind(this))
+    this.rejouer.addEventListener('click', this.resetGame.bind(this))
 
-        this.setupGame();
+    this.initGame()
+  }
+
+  initGame(){
+    this.debut = document.createElement('p')
+    this.debut.textContent = " a toi de jouer choisi la pierre le paiper ou le cisseau"
+    this.debut.style.dsiplay =""
+    this.container.appendChild(this.debut)
+    this.rejouer.style.display ="none"
+  }
+
+playGame(){
+    this.choixOrdi()
+    console.log(this.choixOrdi);
+    const img = document.createElement("img");
+    img.style.display = "block";
+    this.buttonC.style.display = "none";
+    this.buttonF.style.display = "none";
+    this.buttonP.style.display = "none";
+    this.rejouer.style.display = ""
+    this.debut.remove()
+}
+
+choixOrdi(){
+    const choix = ["pierre", "papier", "cisseau"];
+    const x = Math.floor(Math.random() * 3);
+    let parent  
+    switch (choix[x]) {
+        case "pierre":
+            
+            parent = this.pierre
+            this.clone = this.pierre.cloneNode()
+            
+            break;
+        case "papier":
+            parent = this.papier
+            this.clone = this.papier.cloneNode()
+            
+            break;
+        case "cisseau":
+            parent = this.cisseau
+            this.clone = this.cisseau.cloneNode()
+            
+            break;
+    
+        default:
+            break;
     }
 
-    createGameContainer() {
-        const container = document.createElement("div");
-        container.className = "boite";
-        document.body.appendChild(container);
-        return container;
-    }
+}
 
-    createVersusImage() {
-        const image = document.createElement("img");
-        image.className = "img5"
-        image.src = "../../Calendrier-de-l-avent-AFCI/Pierre-Papier-Cisseau-main/versus.jpg";
-        image.alt = "";
-        const versusContainer = document.createElement("div");
-        versusContainer.className = "versus";
-        versusContainer.appendChild(image);
-        this.gameContainer.appendChild(versusContainer);
-        return image;
-    }
-
-    createElement(elementData) {
-        const container = document.createElement("div");
-        container.className = "div5"
-        container.className = elementData.name;
-
-        const image = document.createElement("img");
-        image.className = "img5"
-        image.src = elementData.imageSrc;
-        image.alt = "";
-
-        const button = document.createElement("button");
-        button.className = "button5"
-        button.className = `click ${elementData.name}`;
-        button.textContent = elementData.name.charAt(0).toUpperCase() + elementData.name.slice(1);
-
-        container.appendChild(image);
-        container.appendChild(button);
-
-        return container;
-    }
-
-    setupGame() {
-        this.elements.forEach(elementData => {
-            const elementNode = this.createElement(elementData);
-            const button = elementNode.querySelector("button");
-            button.className = "button5"
-            button.addEventListener("click", () => this.play(elementData.name));
-            this.gameContainer.appendChild(elementNode);
-        });
-    }
-
-    play(playerChoice) {
-        this.playerChoice = playerChoice;
-        this.hideButtons();
-        this.computerChoice = this.getRandomElement();
-        this.showVersusImage();
-        this.determineWinner();
-        this.showResetButton();
-    }
-
-    getRandomElement() {
-        const randomIndex = Math.floor(Math.random() * this.elements.length);
-        return this.elements[randomIndex].name;
-    }
-
-    hideButtons() {
-        this.elements.forEach(elementData => {
-            const button = this.gameContainer.querySelector(`.${elementData.name} button`);
-            button.style.display = "none";
-        });
-    }
-
-    showVersusImage() {
-        this.versusImage.style.display = "block";
-    }
-
-    determineWinner() {
-        // Implementation of winner determination logic
-        // ...
-
-        // Example: Displaying the result in the console
-        console.log(`Player: ${this.playerChoice}, Computer: ${this.computerChoice}`);
-    }
-
-    showResetButton() {
-        this.resetButton = document.createElement("button");
-        this.resetButton.className = "button5"
-        this.resetButton.textContent = "Rejouer";
-        this.resetButton.addEventListener("click", () => this.resetGame());
-        document.body.appendChild(this.resetButton);
-    }
-
-    resetGame() {
-        this.elements.forEach(elementData => {
-            const button = this.gameContainer.querySelector(`.${elementData.name} button`);
-            button.style.display = "block";
-        });
-
-        this.versusImage.style.display = "none";
-        this.playerChoice = null;
-        this.computerChoice = null;
-
-        if (this.resetButton) {
-            this.resetButton.remove();
-        }
-    }
+  resetGame(){
+   this.initGame()
+   this.buttonC.style.display =""
+   this.buttonF.style.display =""
+   this.buttonP.style.display =""
+}
 }
