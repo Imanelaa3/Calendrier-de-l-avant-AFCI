@@ -4,9 +4,8 @@
 import Imane from "./Imane/imane.js";
 import Dylan from "./dylan/dylan.js";
 import Dylan2 from "./dylan/dylan2.js";
-import Tim from "./tim/script.js"
-import AnimImane from "./Imane/AnimImane.js"
-
+import Tim from "./tim/script.js";
+import AnimImane from "./Imane/AnimImane.js";
 
 //----------------B1------------------
 
@@ -15,15 +14,15 @@ const baliseAnim = document.querySelector("balise-animation");
 const currentDate = new Date();
 
 const listImport = {
-  1: { file: "./Imane/AnimImane.js",template:'#imane' },
+  1: { file: "./Imane/AnimImane.js", template: "#imane" },
   2: { file: "./audejeu/script.js", template: "#aude" },
   3: { file: "./dylan/dylan.js", template: "#dylan" },
   4: { file: "./dylan/dylan2.js", template: "#dylan2" },
   5: { file: "./Pierre-Papier-Cisseau-main/script.js", template: "#faissal" },
-  6: {file:"./taquin/taquin.js",template:"#aude2"},
-  7: {file:"./thomas/script.js", template:"#thomas"},
-  8: {file:"./tim/script.js",template:'#tim'},
-  9: {file:"./thomas2/Game2D-POO/script.js", template:"thomas2"},
+  6: { file: "./taquin/taquin.js", template: "#aude2" },
+  7: { file: "./thomas/script.js", template: "#thomas" },
+  8: { file: "./tim/script.js", template: "#tim" },
+  9: { file: "./thomas2/Game2D-POO/script.js", template: "thomas2" },
   10: "",
   11: "",
   12: "",
