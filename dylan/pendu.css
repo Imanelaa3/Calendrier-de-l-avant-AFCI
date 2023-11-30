@@ -95,8 +95,8 @@
 
   #hangman-image {
     position: absolute;
-    left: 78%;
-    top: 2%;
+    left: 50%;
+    top: 20%;
     transform: translate(-50%, -50%);
   }
 
@@ -111,8 +111,8 @@
 @media screen and (min-width: 600px) {
   #hangman-image {
     position: absolute;
-    left: 65%;
-    top: 0%;
+    left: 50%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 

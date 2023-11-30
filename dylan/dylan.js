@@ -49,7 +49,7 @@ export default class Dylan extends HTMLElement {
         };
         const updateHangmanImage = (errorCount) => {
             const hangmanImageContainer = this.querySelector('#hangman-image');
-            hangmanImageContainer.innerHTML = `<img src="/images/hangman-${errorCount}.png" alt="Pendu image ${errorCount}"/>`;
+            hangmanImageContainer.innerHTML = `<img src="./images/hangman-${errorCount}.png" alt="Pendu image ${errorCount}"/>`;
         };
 
         const demarrerPartie = () => {
