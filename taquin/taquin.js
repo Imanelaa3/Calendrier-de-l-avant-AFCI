@@ -3,10 +3,10 @@ export default class aude extends HTMLElement{
 setHTML()
 {
     const popupContent = `
-        <link rel="stylesheet" href="../../taquin/taquin.css">
+        <link rel="stylesheet" href="./taquin/taquin.css">
         <h1>Jeu du Taquin Saint Nicolas</h1>
         <audio id="background-music" loop>
-            <source src="../../taquin/music.mp3" type="audio/mp3">
+            <source src="./taquin/music.mp3" type="audio/mp3">
         </audio>
 
         <div id="timer" style="display: none;">0:00</div>
@@ -14,11 +14,11 @@ setHTML()
         <div class="flex">
             <div id="puzzle-container" class="easy"></div>
             <div id="original-images-container">
-                <img id="original-image-easy" class="original-image" src="../../taquin/nicolas.jpg" alt="Image originale facile">
-                <img id="original-image-medium" class="original-image" src="../../taquin/nicolas2.jpg" alt="Image originale moyenne">
-                <img id="original-image-hard" class="original-image" src="../../taquin/nicolas3.jpg" alt="Image originale difficile">
-                <img id="original-image-extreme" class="original-image" src="../../taquin/pere.jpg" alt="Image originale extreme">
-                <img id="original-image-ultime" class="original-image" src="../../taquin/merci.jpg" alt="Image originale ultime">
+                <img id="original-image-easy" class="original-image" src="./taquin/nicolas.jpg" alt="Image originale facile">
+                <img id="original-image-medium" class="original-image" src="./taquin/nicolas2.jpg" alt="Image originale moyenne">
+                <img id="original-image-hard" class="original-image" src="./taquin/nicolas3.jpg" alt="Image originale difficile">
+                <img id="original-image-extreme" class="original-image" src="./taquin/pere.jpg" alt="Image originale extreme">
+                <img id="original-image-ultime" class="original-image" src="./taquin/merci.jpg" alt="Image originale ultime">
             </div>
         </div>
 
@@ -139,11 +139,11 @@ movePiece(clickedPiece) {
 }
 
 levels = {
-    easy: { boardSize: 3, pieceSize: 100, image: "../../taquin/nicolas.jpg" },
-    medium: { boardSize: 4, pieceSize: 75, image: "../../taquin/nicolas2.jpg" },
-    hard: { boardSize: 5, pieceSize: 60, image: "../../taquin/nicolas3.jpg" },
-    extreme: { boardSize: 7, pieceSize: 50, image: "../../taquin/pere.jpg" },
-    ultime: { boardSize: 8, pieceSize: 40, image: "../../taquin/merci.jpg" }
+    easy: { boardSize: 3, pieceSize: 100, image: "./taquin/nicolas.jpg" },
+    medium: { boardSize: 4, pieceSize: 75, image: "./taquin/nicolas2.jpg" },
+    hard: { boardSize: 5, pieceSize: 60, image: "./taquin/nicolas3.jpg" },
+    extreme: { boardSize: 7, pieceSize: 50, image: "./taquin/pere.jpg" },
+    ultime: { boardSize: 8, pieceSize: 40, image: "./taquin/merci.jpg" }
 };
 
 currentLevel = this.levels.easy;
