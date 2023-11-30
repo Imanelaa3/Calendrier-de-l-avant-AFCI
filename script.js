@@ -15,7 +15,7 @@ const baliseAnim = document.querySelector("balise-animation");
 const currentDate = new Date();
 
 const listImport = {
-  1: { file: "/Imane/AnimImane.js",template:'#imane' },
+  1: { file: "Calendrier-de-l-avent-afci/Imane/AnimImane.js",template:'#imane' },
   2: { file: "/audejeu/script.js", template: "#aude" },
   3: { file: "/dylan/dylan.js", template: "#dylan" },
   4: { file: "/dylan/dylan2.js", template: "#dylan2" },
