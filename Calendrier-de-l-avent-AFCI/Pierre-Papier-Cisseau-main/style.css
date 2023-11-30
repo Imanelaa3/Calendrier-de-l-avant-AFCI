@@ -27,8 +27,8 @@
 }
 .img5
 {
-    height: 50vh;
-    width: 50vh;
+    height: 40vh;
+    width: 40vh;
     display: none;
 }
 .versus
@@ -99,6 +99,7 @@ color: aliceblue;
         margin-bottom: 60px;
         height: 80px;
         width: 80px;
+        bottom: 5vh;
     }
     .message{
 
@@ -106,7 +107,8 @@ color: aliceblue;
         position: fixed;
         top:90vh
     }
-    .button5{
-        bottom: 5vh;
+    .click{
+        margin: 5px;
+       
     }
 }

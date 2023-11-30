@@ -17,7 +17,7 @@ export default class AnimImane {
         this.canvas.addEventListener('touchmove', (event) => this.animate(event));
 
         // Ajoutez le chemin correct vers vos images
-        const imagePaths = ["../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.jpg","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png",];
+        const imagePaths = ["../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png","../../images/cadeau-noel.png","../../images/cadeau2.png","../../images/boule.png","../../images/biscuit.png","../../images/sapin.png","../../images/sapin.png",];
 
         for (let i = 0; i < imagePaths.length; i++) {
             this.loadImage(imagePaths[i]);
@@ -76,33 +76,30 @@ export default class AnimImane {
     }
     drawText() {
         this.ctx.fillStyle = 'black'; // Couleur du texte
-        this.ctx.font = '30px Calibri'; // Police et taille du texte
-        this.ctx.fillText(this.text, 500, 400); // Coordonnées de départ du texte
+        this.ctx.font = 0.05 * window.innerWidth +'px Calibri'; // Police et taille du texte
+        this.ctx.fillText(this.text, 100, 400); // Coordonnées de départ du texte
+        
     }
 
-    drawText2() {
-        this.ctx.fillStyle = 'black'; // Couleur du texte
-        this.ctx.font = '20px Calibri'; // Police et taille du texte
-        this.ctx.fillText(this.text2, 300, 500); // Coordonnées de départ du texte
-    }
 
     drawBackground() {
-        this.ctx.drawImage(this.backgroundImage, 0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.drawImage(this.backgroundImage, 10, 10, this.canvas.width, this.canvas.height);
     }
 
 
     draw() {
-        this.drawBackground
+        
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+        this.drawBackground()
         for (let i = 0; i < this.images.length; i++) {
             const image = this.images[i];
             this.ctx.drawImage(image.img, image.x, image.y, 50, 50);
         }
+        
         this.drawText()
-        this.drawText2()
-
+        
+        
         requestAnimationFrame(() => this.animate());
     }
     
