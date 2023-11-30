@@ -39,7 +39,7 @@
     justify-content: center;
     border-radius: 30px;
 }
-.message
+.message, .message1
 {
     background-color: rgb(223, 62, 62);
     color: aliceblue;
@@ -103,9 +103,16 @@ color: aliceblue;
     }
     .message{
 
+        font-size: 3rem;
+        position: fixed;
+        height: 83px;
+        top:75vh
+    }
+
+    .message1{
         font-size: smaller;
         position: fixed;
-        top:90vh
+        top:40vh
     }
     .click{
         margin: 5px;

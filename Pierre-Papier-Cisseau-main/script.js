@@ -213,7 +213,7 @@ export default class Game {
     this.debut = document.createElement("p");
     this.debut.textContent =
       " A toi de jouer choisi la pierre le papier ou le cisseau";
-    this.debut.className = "message"
+    this.debut.className = "message1"
     this.container.appendChild(this.debut);
     this.rejouer.style.display = "none";
   }
