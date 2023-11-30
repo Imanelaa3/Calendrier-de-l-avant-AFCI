@@ -1,4 +1,4 @@
-class Game {
+export default class Game {
   constructor() {
     // Création de l'élément canvas
     this.canvas = document.createElement("canvas");
@@ -377,4 +377,4 @@ class Gift {
   }
 }
 
-const jeu = new Game();
+//const jeu = new Game();

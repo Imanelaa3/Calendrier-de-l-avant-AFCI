@@ -23,7 +23,7 @@ const listImport = {
   6: {file:"./taquin/taquin.js",template:"#aude2"},
   7: {file:"./thomas/script.js", template:"#thomas"},
   8: {file:"./tim/script.js",template:'#tim'},
-  9: "",
+  9: {file:"./thomas2/Game2D-POO/script.js", template:"thomas2"},
   10: "",
   11: "",
   12: "",
@@ -51,7 +51,7 @@ buttons.forEach((button) => {
         baliseAnim.style.display === "none" ||
         baliseAnim.style.display === ""
       ) {
-        //console.log(listImport[day], day);
+        console.log(listImport[day], day);
         const import1 = await import(listImport[day].file);
         //console.log(import1);
         const anim = new import1.default();

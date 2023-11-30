@@ -64,7 +64,7 @@ class StarWarsScene {
               }
               .img1-vador > .img1-vador-content {
                 height: 100%;
-                background-image: url(/thomas/src/vadorsmokeinit.png);
+                background-image: url(./thomas/src/vadorsmokeinit.png);
                 background-repeat: no-repeat;
                 background-size: contain;
               }
@@ -76,7 +76,7 @@ class StarWarsScene {
               }
               .img2-lightsaber > .img2-lightsaber-content {
                 height: 100%;
-                background-image: url(/thomas/src/vadorsmoke_lightsaber.png);
+                background-image: url(./thomas/src/vadorsmoke_lightsaber.png);
                 background-repeat: no-repeat;
                 background-size: contain;
                 animation: lights 10s ease infinite;
@@ -84,7 +84,7 @@ class StarWarsScene {
               }
               .img3-smoke > .img3-smoke-content {
                 height: 100%;
-                background-image: url(/thomas/src/vadorsmoke_smoke.png);
+                background-image: url(./thomas/src/vadorsmoke_smoke.png);
                 background-repeat: no-repeat;
                 background-size: contain;
                 animation: gotop 10s linear infinite;
