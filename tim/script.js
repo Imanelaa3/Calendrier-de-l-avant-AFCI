@@ -119,7 +119,7 @@ const styles = /* CSS */ `
         padding: 10px;
         box-shadow: 2px 2px 5px black;
         overflow: hidden;
-        background: url(../../tim/img/fondNoel2.jpg) bottom no-repeat;
+        background: url(./tim/img/fondNoel2.jpg) bottom no-repeat;
     }
 
     .settingsContainer {
