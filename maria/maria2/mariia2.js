@@ -33,7 +33,7 @@ export default class mariia2 extends HTMLElement{
     img2.style.width = "100%"
     img2.style.position = "absolute"
     img2.style.top = "30%"
-    img2.setAttribute("src", "../images-maria2/merry-christmas-train.png")
+    img2.setAttribute("src", "./maria/maria2/images-maria2/merry-christmas-train.png")
     
        
     }

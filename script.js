@@ -22,11 +22,11 @@ const listImport = {
   6: { file: "./taquin/taquin.js", template: "#aude2" },
   7: { file: "./thomas/script.js", template: "#thomas" },
   8: { file: "./tim/script.js", template: "#tim" },
-  9: { file: "./thomas2/Game2D-POO/script.js", template: "thomas2" },
-  10: "",
-  11: "",
-  12: "",
-  13: "",
+  9: { file: "./thomas2/Game2D-POO/script.js", template: "#thomas2" },
+  10:{file: "./maria/maria1/mariia1.js", template: "#maria"},
+  11:{file: "./maria/maria2/mariia2.js", temlpate: "#maria2"} ,
+  12:{file: "./thierry/thierry1/loterie-thierry1.js",template:'#thierry'},
+  13:{file: "./thierry/thierry2/hockey-thierry2.js",template:"#thierry2"},
   14: "",
   15: "",
   16: "",
@@ -42,7 +42,7 @@ const listImport = {
 
 buttons.forEach((button) => {
   const day = parseInt(button.getAttribute("data-day"));
-  const allowedDate = new Date(2023, 11, day);
+  const allowedDate = new Date(2023, 10, day);
 
   if (currentDate >= allowedDate) {
     button.addEventListener("click", async () => {
@@ -52,7 +52,7 @@ buttons.forEach((button) => {
       ) {
         console.log(listImport[day], day);
         const import1 = await import(listImport[day].file);
-        //console.log(import1);
+        console.log(import1);
         const anim = new import1.default();
 
         const template = document.querySelector(listImport[day].template);
