@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 
     <head>
@@ -8,10 +8,22 @@
         <link rel="stylesheet" href="styles.css">
 
         <title>Casse briques</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: gruppo, sans-serif;
+            }
+        </style>
     </head>
 
-    <body>
+    <body><!--
         <section class="game" id="game">
+            <button id="pause-btn" class="pause-btn">Pause</button>
+
             <button id="rules-btn" class="btn rules-btn">Règles de jeu</button>
             <div id="rules" class="rules">
                 <h2>Règles de jeu</h2>
@@ -32,10 +44,14 @@
             </div>
 
             <canvas id="canvas" width="600" height="500"></canvas>
-        </section>
-    
-        <script src="components.js"></script>
-        <script src="game.js"></script>
+        </section> -->
+        <script type="text/javascript" src="https://click123.ca/dist/js/snow.js"></script>
+        <!-- <script src="game.js" type="module"></script> -->
+        <script type="module">
+            import BrickBreakerGame from './game.js';
+            const brickBreakerGame = new BrickBreakerGame();
+            document.body.appendChild(brickBreakerGame.container);
+        </script>
     </body>
 
 </html>

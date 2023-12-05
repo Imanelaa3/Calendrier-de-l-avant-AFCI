@@ -1,3 +1,4 @@
+/* 
 * {
     box-sizing: border-box;
 }
@@ -5,13 +6,10 @@
 body {
     margin: 0;
     font-family: gruppo, sans-serif;
-    
-    
-    
 }
 
 .game {
-    background-image: url(./img/pere-noel.jpg);
+    background-image: url(./img/boules.webp);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -29,7 +27,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    /*top: 200px;*/
     width: 250px;
     height: 300px;
     visibility: hidden;
@@ -80,6 +77,31 @@ canvas {
     display: block;
     border-radius: 4px;
 }
+.pause-btn
+{
+    cursor: pointer;
+    background-color: #000;
+    border: none;
+    border-color: #000;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    font-family: gruppo, sans-serif;
+    transition: background-color .1s ease-in;
+}
+
+.pause-btn:hover {
+    background-color: #376599;
+}
+
+.pause-btn{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    
+    
+}
+
 
 .btn {
     cursor: pointer;
@@ -136,3 +158,38 @@ canvas {
     margin-bottom: .5rem;
     margin-top: 0;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .game {
+        padding: 10px; 
+    }
+
+    #game-over {
+        width: 90%; 
+    }
+
+    .sound-container {
+        right: 5%;
+    }
+
+    .rules {
+        width: 90%;
+        padding:10px;
+    }
+    .btn
+    {
+        padding: 8px 16px;
+    }
+    .rules-btn
+    {
+        top:10px;
+        left:10px;
+    }
+
+    .pause-btn
+    {
+        top:10px;
+        right:10px;
+    }
+} */
