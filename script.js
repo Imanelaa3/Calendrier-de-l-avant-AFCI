@@ -22,12 +22,12 @@ const listImport = {
   6: { file: "./taquin/taquin.js", template: "#aude2" },
   7: { file: "./thomas/script.js", template: "#thomas" },
   8: { file: "./tim/script.js", template: "#tim" },
-  9: { file: "./thomas2/Game2D-POO/script.js", template: "#thomas2" },
+  9: { file: "./thomas2/Game2D-POO/script.js", template: "#thomas2" }, //TODO
   10:{file: "./maria/maria1/mariia1.js", template: "#maria"},
   11:{file: "./maria/maria2/mariia2.js", temlpate: "#maria2"} ,
   12:{file: "./thierry/thierry1/loterie-thierry1.js",template:'#thierry'},
-  13:{file: "./thierry/thierry2/hockey-thierry2.js",template:"#thierry2"},
-  14: "",
+  13:{file: "./thierry/thierry2/hockey-thierry2.js",template:"#thierry2"},//TODO
+  14: {file:"./Calendrier-de-l-avent-AFCI/Maxime/baballe/script.js", template:"#maxime"},//TODO
   15: "",
   16: "",
   17: "",

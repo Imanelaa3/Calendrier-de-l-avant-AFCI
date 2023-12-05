@@ -9,12 +9,13 @@ export default class balleAnimation {
     balles = [];
     constructor() {
 
-        this.resize()
+        this.text = "Cliquez"
         window.addEventListener("resize", this.resize.bind(this));
         this.canvas.addEventListener("click", this.balle.bind(this))
         setInterval(Baballes.background, 1000,this.canvas)
         Baballes.background(this.canvas)
         this.draw()
+        this.resize()
     }
     resize() {
         const snapshot = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height)
@@ -33,7 +34,14 @@ export default class balleAnimation {
         this.balles.forEach((a)=>{
             a.dessin(this.canvas)
         })
+        this.drawText()
         requestAnimationFrame(this.draw.bind(this))
     }
+    drawText() {
+        this.ctx.fillStyle = "black"; // Couleur du texte
+        this.ctx.font = 0.05 * window.innerWidth + "px Calibri"; // Police et taille du texte
+        this.ctx.fillText(this.text, 100, 400); // Coordonnées de départ du texte
+      }
+      
 }
 

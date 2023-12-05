@@ -15,7 +15,7 @@ export default class AnimImane {
     this.canvas.addEventListener("mousemove", (event) => this.animate(event));
     this.canvas.addEventListener("touchmove", (event) => this.animate(event));
 
-    // Ajoutez le chemin correct vers vos images
+  
     const imagePaths = [
       "./images/cadeau-noel.png",
       "./images/cadeau2.png",

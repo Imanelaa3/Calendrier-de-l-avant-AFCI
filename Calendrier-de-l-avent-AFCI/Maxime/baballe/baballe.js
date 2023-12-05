@@ -16,7 +16,7 @@ this.y = y;
 console.log(`${c1} ,${c2} ,${c3}`);
 
 this.img=new Image()
-this.img.src= "./balle.png"
+this.img.src= "./Calendrier-de-l-avent-AFCI/Maxime/baballe/balle.png"
 this.img.onload = () => {
     this.loaded = true;
 }
