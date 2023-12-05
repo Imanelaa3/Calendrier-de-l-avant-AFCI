@@ -119,7 +119,7 @@ const styles = /* CSS */ `
         padding: 10px;
         box-shadow: 2px 2px 5px black;
         overflow: hidden;
-        background: url(../../tim/img/fondNoel2.jpg) bottom no-repeat;
+        background: url(./tim/img/fondNoel2.jpg) bottom no-repeat;
     }
 
     .settingsContainer {
@@ -199,7 +199,7 @@ export default class ChristmasCalendar {
     // this.closeButton = document.querySelector(".close-modal");
     this.isAnimating = false;
     this.backgroundMusic = document.createElement('source')
-    this.backgroundMusic.src ='../../tim/audio/je te souhaite joyeux noel (1).mp3'
+    this.backgroundMusic.src ='./tim/audio/je te souhaite joyeux noel (1).mp3'
     this.backgroundMusic.type = "audio/mp3"
 
 
@@ -426,8 +426,8 @@ export default class ChristmasCalendar {
       return img;
     }
 
-    let cible = createImage.call(this, "../../tim/img/cadeau.jpg", "cible");
-    let pereNoel = createImage.call(this, "../../tim/img/pereNoel.jpg", "pereNoel");
+    let cible = createImage.call(this, "./tim/img/cadeau.jpg", "cible");
+    let pereNoel = createImage.call(this, "./tim/img/pereNoel.jpg", "pereNoel");
 
     // Hide images after a certain time
     setTimeout(() => {

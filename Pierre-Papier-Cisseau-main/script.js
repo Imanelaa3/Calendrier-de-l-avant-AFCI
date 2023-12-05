@@ -111,17 +111,17 @@ export default class Game {
       {
         name: "pierre",
         imageSrc:
-          "/Pierre-Papier-Cisseau-main/pierre.jpg",
+          "./Pierre-Papier-Cisseau-main/pierre.jpg",
       },
       {
         name: "ciseau",
         imageSrc:
-          "/Pierre-Papier-Cisseau-main/ciseau.jpg",
+          "./Pierre-Papier-Cisseau-main/ciseau.jpg",
       },
       {
         name: "papier",
         imageSrc:
-          "/Pierre-Papier-Cisseau-main/papier.jpg",
+          "./Pierre-Papier-Cisseau-main/papier.jpg",
       },
     ]),
       (this.clone = null);
@@ -139,7 +139,7 @@ export default class Game {
     this.versus = document.createElement("img");
     this.versus.className = "img5";
     this.versus.src =
-      "/Pierre-Papier-Cisseau-main/versus.jpg";
+      "./Pierre-Papier-Cisseau-main/versus.jpg";
     //creation boutton pierre feuille cisseaux
     this.buttonC = document.createElement("button");
     this.buttonC.className = "click";
@@ -213,7 +213,7 @@ export default class Game {
     this.debut = document.createElement("p");
     this.debut.textContent =
       " A toi de jouer choisi la pierre le papier ou le cisseau";
-    this.debut.className = "message"
+    this.debut.className = "message1"
     this.container.appendChild(this.debut);
     this.rejouer.style.display = "none";
   }
