@@ -1,4 +1,4 @@
-"use stict";
+"use strict";
 
 //-----------Import-----------------
 import Imane from "./Imane/imane.js";
@@ -28,7 +28,7 @@ const listImport = {
   13: { file: "./thierry/thierry2/hockey-thierry2.js", template: "#thierry2" },
   14: {file: "./Calendrier-de-l-avent-AFCI/Maxime/baballe/script.js",template: "#maxime"},
   15: { file: "./casse_briques/game.js", template: "#khalid" },
-  16: "",
+  16: { file: "./harry/gremlinvasion.js", template: "#harry1" },
   17: "",
   18: "",
   19: "",
