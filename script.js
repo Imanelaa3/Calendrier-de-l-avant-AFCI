@@ -6,6 +6,7 @@ import Dylan from "./dylan/dylan.js";
 import Dylan2 from "./dylan/dylan2.js";
 import Tim from "./tim/script.js";
 import AnimImane from "./Imane/AnimImane.js";
+import Thomas from "./thomas2/Game2D - POO/script.js";
 
 //----------------B1------------------
 
@@ -22,7 +23,7 @@ const listImport = {
   6: { file: "./taquin/taquin.js", template: "#aude2" },
   7: { file: "./thomas/script.js", template: "#thomas" },
   8: { file: "./tim/script.js", template: "#tim" },
-  9: { file: "./thomas2/Game2D-POO/script.js", template: "#thomas2" }, //TODO
+  9: { file: "./thomas2/Game2D - POO/script.js", template: "#thomas2" }, //TODO
   10:{file: "./maria/maria1/mariia1.js", template: "#maria"},
   11:{file: "./maria/maria2/mariia2.js", temlpate: "#maria2"} ,
   12:{file: "./thierry/thierry1/loterie-thierry1.js",template:'#thierry'},
@@ -42,7 +43,7 @@ const listImport = {
 
 buttons.forEach((button) => {
   const day = parseInt(button.getAttribute("data-day"));
-  const allowedDate = new Date(2023, 11, day);
+  const allowedDate = new Date(2023, 10, day);
 
   if (currentDate >= allowedDate) {
     button.addEventListener("click", async () => {

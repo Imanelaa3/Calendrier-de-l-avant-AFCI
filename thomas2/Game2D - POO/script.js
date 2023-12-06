@@ -53,7 +53,7 @@ export default class Game {
         this.character.width,
         this.character.height
       );
-    this.characterImage.src = "./src/perso.png";
+    this.characterImage.src = "./thomas2/Game2D - POO/src/perso.png";
 
     this.backgroundImage.onload = () =>
       this.ctx.drawImage(
@@ -63,7 +63,7 @@ export default class Game {
         this.canvas.width,
         this.canvas.height
       );
-    this.backgroundImage.src = "./src/background.png";
+    this.backgroundImage.src = "./thomas2/Game2D - POO/src/background.png";
   }
 
   addEventListeners() {
