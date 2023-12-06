@@ -408,6 +408,7 @@ export default class BrickBreakerGame {
     constructor() {
         this.init();
         this.initializeGame();
+        
     }
 
     init() {
@@ -415,6 +416,8 @@ export default class BrickBreakerGame {
         this.createHTML();
         this.applyCSS();
         this.gameOverElement = this.container.querySelector('#game-over');
+        console.log(this.container);
+        
     }
 
     createHTML() {
@@ -432,7 +435,7 @@ export default class BrickBreakerGame {
         </div>
         
         <div class="sound-container">
-            <img src="img/sound_on.png" alt="Sound Image" id="sound">
+            <img src="./casse_briques/img/sound_on.png" alt="Sound Image" id="sound">
         </div>
         
         <div id="game-over">
@@ -458,7 +461,7 @@ export default class BrickBreakerGame {
 
 
 .game {
-    background-image: url(./img/boules.webp);
+    background-image: url(./casse_briques/img/boules.webp);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -613,6 +616,13 @@ canvas {
 @media only screen and (max-width: 600px) {
     .game {
         padding: 10px; /* Ajoutez d'autres styles nécessaires pour la version mobile */
+      
+    }
+
+    #canvas{
+        width: 300px;
+        height: 300px;
+
     }
 
     #game-over {
@@ -650,19 +660,19 @@ document.head.appendChild(style);
 
     initializeGame() {
         /* ===== CHARGEMENT DES DIFFERENTS SONS DU JEU===== */
-        this.WALL_HIT = new Audio('sounds/wall.mp3');
-        this.PADDLE_HIT = new Audio('sounds/paddle_hit.mp3');
-        this.BRICK_HIT = new Audio('sounds/brick_hit.mp3');
-        this.WIN = new Audio('sounds/win.mp3');
-        this.LIFE_LOST = new Audio('sounds/life_lost.mp3');
+        this.WALL_HIT = new Audio('./casse_briques/sounds/wall.mp3');
+        this.PADDLE_HIT = new Audio('./casse_briques/sounds/paddle_hit.mp3');
+        this.BRICK_HIT = new Audio('./casse_briques/sounds/brick_hit.mp3');
+        this.WIN = new Audio('./casse_briques/sounds/win.mp3');
+        this.LIFE_LOST = new Audio('./casse_briques/sounds/life_lost.mp3');
 
         /* ===== CHARGEMENT DES IMAGES ===== */
         this.LEVEL_IMG = new Image(40, 40);
-        this.LEVEL_IMG.src = 'img/level.png';
+        this.LEVEL_IMG.src = '/casse_briques/img/level.png';
         this.LIFE_IMG = new Image(40, 40);
-        this.LIFE_IMG.src = 'img/life.png';
+        this.LIFE_IMG.src = './casse_briques/img/life.png';
         this.SCORE_IMG = new Image();
-        this.SCORE_IMG.src = 'img/score.png';
+        this.SCORE_IMG.src = './casse_briques/img/score.png';
 
         //Initialisation du canvas et définition du context
         this.canvas = this.container.querySelector('#canvas');
@@ -1008,6 +1018,7 @@ document.head.appendChild(style);
                 this.loop();
             }
         }
+
     }
     
     // Création d'une instance du jeu

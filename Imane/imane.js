@@ -14,6 +14,7 @@ export default class Imane extends HTMLElement {
     this.style.top = "10px";
     this.style.right = "10px";
     this.style.left = "10px";
+    
     this.style.display = "none";
 
     this.btn = document.createElement("input");

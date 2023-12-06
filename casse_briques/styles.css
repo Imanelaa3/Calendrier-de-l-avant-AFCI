@@ -1,4 +1,4 @@
-/* 
+
 * {
     box-sizing: border-box;
 }
@@ -163,7 +163,10 @@ canvas {
 @media only screen and (max-width: 600px) {
     .game {
         padding: 10px; 
+        background-color: red;
     }
+
+  
 
     #game-over {
         width: 90%; 
@@ -192,4 +195,4 @@ canvas {
         top:10px;
         right:10px;
     }
-} */
+} 

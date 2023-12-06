@@ -5,8 +5,6 @@ import Imane from "./Imane/imane.js";
 import Dylan from "./dylan/dylan.js";
 import Dylan2 from "./dylan/dylan2.js";
 import Tim from "./tim/script.js";
-import AnimImane from "./Imane/AnimImane.js";
-import Thomas from "./thomas2/Game2D - POO/script.js";
 
 //----------------B1------------------
 
@@ -23,13 +21,13 @@ const listImport = {
   6: { file: "./taquin/taquin.js", template: "#aude2" },
   7: { file: "./thomas/script.js", template: "#thomas" },
   8: { file: "./tim/script.js", template: "#tim" },
-  9: { file: "./thomas2/Game2D - POO/script.js", template: "#thomas2" }, //TODO
-  10:{file: "./maria/maria1/mariia1.js", template: "#maria"},
-  11:{file: "./maria/maria2/mariia2.js", temlpate: "#maria2"} ,
-  12:{file: "./thierry/thierry1/loterie-thierry1.js",template:'#thierry'},
-  13:{file: "./thierry/thierry2/hockey-thierry2.js",template:"#thierry2"},//TODO
-  14: {file:"./Calendrier-de-l-avent-AFCI/Maxime/baballe/script.js", template:"#maxime"},//TODO
-  15: "",
+  9: { file: "./thomas2/Game2D - POO/script.js", template: "#thomas2" },
+  10: { file: "./maria/maria1/mariia1.js", template: "#maria" },
+  11: { file: "./maria/maria2/mariia2.js", template: "#maria2" },
+  12: { file: "./thierry/thierry1/loterie-thierry1.js", template: "#thierry" },
+  13: { file: "./thierry/thierry2/hockey-thierry2.js", template: "#thierry2" },
+  14: {file: "./Calendrier-de-l-avent-AFCI/Maxime/baballe/script.js",template: "#maxime"},
+  15: { file: "./casse_briques/game.js", template: "#khalid" },
   16: "",
   17: "",
   18: "",
@@ -37,10 +35,10 @@ const listImport = {
   20: "",
   21: "",
   22: "",
-  13: "",
+  23: "",
   24: "",
 };
-
+console.log(listImport);
 buttons.forEach((button) => {
   const day = parseInt(button.getAttribute("data-day"));
   const allowedDate = new Date(2023, 11, day);
@@ -51,7 +49,7 @@ buttons.forEach((button) => {
         baliseAnim.style.display === "none" ||
         baliseAnim.style.display === ""
       ) {
-        console.log(listImport[day], day);
+        console.log(listImport, listImport[day], day, listImport[day].template);
         const import1 = await import(listImport[day].file);
         console.log(import1);
         const anim = new import1.default();
@@ -62,16 +60,18 @@ buttons.forEach((button) => {
           //console.log("template");
           baliseAnim.append(template.content);
         }
-        if (anim.canvas) {
+        if (anim.container) {
+          baliseAnim.append(anim.container);
+        } else if (anim.canvas) {
           baliseAnim.append(anim.canvas);
         } else if (anim instanceof HTMLElement) {
           baliseAnim.append(anim);
-        } else if (anim.container) {
-          baliseAnim.append(anim.container);
         }
-
         baliseAnim.style.display = "block";
         //console.log("ok");
+        if (anim.resize && typeof anim.resize == "function") {
+          anim.resize();
+        }
       }
 
       //TODO function import
