@@ -1,0 +1,145 @@
+@media screen and (max-width: 600px) {
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#close-game-button {
+  position: absolute;
+  top: 93%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  border: 4px solid rgba(37, 230, 37, 0.93);
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#letter-buttons-container {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: auto;
+  background-color: red;
+  border: 4px solid rgba(37, 230, 37, 0.93);
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+#letter-buttons-container button {
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  background-color: rgba(37, 230, 37, 0.93);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#error-count {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#word-display {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw; /* Adaptative font size */
+}
+
+#new-game-button {
+  position: absolute;
+  top: 86%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  border: 4px solid rgba(37, 230, 37, 0.93);
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#result {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  #word-display,
+  #result {
+    font-size: 4vw;
+  }
+
+  #letter-buttons-container button {
+    height: 30px;
+    width: 30px;
+  }
+
+  #hangman-image {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+  }
+
+  #hangman-image img {
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #hangman-image {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+  }
+
+  #hangman-image img {
+    width: 30vw;
+    height: 50vh;
+    max-width: 30vw;
+    max-height: 50vh;
+  }
+  #letter-buttons-container {
+    top: 75%;
+  }
+  #result {
+    top: 62%;
+  }
+
+  #error-count {
+    top: 58%;
+  }
+  #word-display {
+    top: 50%;
+  }
+  #new-game-button {
+    top: 90%;
+  }
+
+  #close-game-button {
+    top: 97%;
+  }
+}
