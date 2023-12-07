@@ -6,6 +6,10 @@ import Dylan from "./dylan/dylan.js";
 import Dylan2 from "./dylan/dylan2.js";
 import Tim from "./tim/script.js";
 
+
+
+
+
 //----------------B1------------------
 
 const buttons = document.querySelectorAll("button");
@@ -29,7 +33,7 @@ const listImport = {
   14: {file: "./Calendrier-de-l-avent-AFCI/Maxime/baballe/script.js",template: "#maxime"},
   15: { file: "./casse_briques/game.js", template: "#khalid" },
   16: { file: "./harry/gremlinvasion.js", template: "#harry1" },
-  17: "",
+  17: {file:"./Imane/AnimImane2.js",template:"#imane2"},
   18: "",
   19: "",
   20: "",
@@ -41,7 +45,7 @@ const listImport = {
 console.log(listImport);
 buttons.forEach((button) => {
   const day = parseInt(button.getAttribute("data-day"));
-  const allowedDate = new Date(2023, 11, day);
+  const allowedDate = new Date(2023, 10, day);
 
   if (currentDate >= allowedDate) {
     button.addEventListener("click", async () => {
