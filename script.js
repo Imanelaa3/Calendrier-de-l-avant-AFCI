@@ -41,7 +41,7 @@ const listImport = {
 console.log(listImport);
 buttons.forEach((button) => {
   const day = parseInt(button.getAttribute("data-day"));
-  const allowedDate = new Date(2023, 10, day);
+  const allowedDate = new Date(2023, 11, day);
 
   if (currentDate >= allowedDate) {
     button.addEventListener("click", async () => {
