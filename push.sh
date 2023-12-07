@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ "$1" = "-m" ]; then
-  message="$2"
+if [ -n "$1" ] && [ "$1" != "''" ] && [ "$1" != '""' ]; then
+  message="$1"
 else
   message="no comment"
 fi
