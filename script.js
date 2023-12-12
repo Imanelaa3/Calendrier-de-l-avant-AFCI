@@ -33,7 +33,7 @@ const listImport = {
   14: {file: "./Calendrier-de-l-avent-AFCI/Maxime/baballe/script.js",template: "#maxime"},
   15: { file: "./casse_briques/game.js", template: "#khalid" },
   16: { file: "./harry/gremlinvasion.js", template: "#harry1" },
-  17: {file:"./Imane/AnimImane2.js",template:"#imane2"},
+  17: {file:"./tim2/tim2.js",template:"#tim2"},
   18: "",
   19: "",
   20: "",
