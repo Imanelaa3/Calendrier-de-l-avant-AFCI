@@ -199,7 +199,7 @@ export default class Game {
     // this.restartGameButton = document.querySelector(".buttonRestart");
     // this.rulesButton = document.querySelector(".buttonRules");
     // this.rules = document.querySelector(".rules");
-    console.log(this.startGameButton);
+    // console.log(this.startGameButton);
     // setup des différentes fonctionnalités
     this.jeuEnCours = false;
     this.jumping = false;
@@ -238,7 +238,7 @@ export default class Game {
     this.toplimit = parseInt(
       window.getComputedStyle(this.personnageImg).getPropertyValue("top")
     );
-    console.log(this.toplimit);
+    // console.log(this.toplimit);
     this.personnageSize = this.personnageImg.getBoundingClientRect();
     // on calcule la position left de l'élément personnage et on ajoute sa largeur pour obtenir leftlimit.
     this.leftlimit =
@@ -377,7 +377,7 @@ export default class Game {
   }
 
   startGameFunction() {
-    console.log("Jeu démarre");
+    // console.log("Jeu démarre");
     this.animateObstacle(
       ...this.obstacles[Math.floor(Math.random() * this.obstacles.length)]
     );
@@ -386,7 +386,7 @@ export default class Game {
   }
 
   animateObstacle(obstacle, animationClass) {
-    console.log(obstacle);
+    // console.log(obstacle);
     if (!this.jeuEnCours) {
       this.jeuEnCours = true;
       setTimeout(() => {
@@ -395,7 +395,7 @@ export default class Game {
         setTimeout(() => {
           obstacle.classList.remove(animationClass);
           this.jeuEnCours = false;
-          console.log(this.obstacles);
+          // console.log(this.obstacles);
           this.animateObstacle(
             ...this.obstacles[Math.floor(Math.random() * this.obstacles.length)]
           );
@@ -417,6 +417,9 @@ export default class Game {
   }
 
   resize() {
+    this.toplimit = parseInt(
+      window.getComputedStyle(this.personnageImg).getPropertyValue("top")
+    );
     if (!this.resizing) {
       this.resizing = true;
       // Add your resize logic here
@@ -431,13 +434,10 @@ export default class Game {
       window.getComputedStyle(this.obstacle1Div).getPropertyValue("left")
     );
     // on calcule la position left de l'élément personnage et on ajoute sa largeur pour obtenir leftlimit.
-    // this.toplimit = parseInt(window.getComputedStyle(this.personnageImg).getPropertyValue("top"));
+    //  this.toplimit = parseInt(window.getComputedStyle(this.personnageImg).getPropertyValue("top"));
     this.personnageSize = this.personnageImg.getBoundingClientRect();
-    this.leftlimit =
-      parseInt(
-        window.getComputedStyle(this.personnageImg).getPropertyValue("left")
-      ) + this.personnageSize.width;
-    // console.log(personnageTop, this.toplimit);
+    this.leftlimit = parseInt( window.getComputedStyle(this.personnageImg).getPropertyValue("left")) + this.personnageSize.width;
+    console.log(personnageTop, this.toplimit);
     // console.log(obstacleleft, this.leftlimit);
 
     // console.log(personnageTop + ' / ' + this.toplimit);
@@ -451,7 +451,7 @@ export default class Game {
       this.jeuEnCours = false;
       this.obstacle1Div.style.display = "none";
       this.obstacle2Div.style.display = "none";
-      console.log(this.obstacle2Array);
+      // console.log(this.obstacle2Array);
     }
   }
 
@@ -488,18 +488,19 @@ export default class Game {
     this.obstacle2Div.style.display = "inline";
 
     // Redémarrer le jeu
-    console.log("test");
+    // console.log("test");
     this.startGameFunction();
     // on appelle la fonction prenant en compte les changements pour les écran < 1100px
     this.resizeScreen();
-    console.log(this.startGameFunction);
+    // console.log(this.startGameFunction);
   }
 
   resizeScreen() {
-    console.log("resizeScreen() called");
+    // console.log("resizeScreen() called");
     if (window.matchMedia("(max-width: 1100px)").matches) {
       // this.animateObstacle(...this.obstacles[[this.obstacle1Div, "animationObstacle1"]]);
-      console.log("petit");
+      // console.log("petit");
+      
       this.obstacles = [[this.obstacle1Div, "animationObstacle1"]];
     } else if (window.matchMedia("(min-width: 1100px)").matches) {
       this.obstacles = [
