@@ -67,6 +67,18 @@ export default class aude extends HTMLElement {
                 p{
                     color: white;
                 }
+                 @media only screen and (max-width: 600px) {
+                    #memory-container {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                     @media only screen and (min-width: 601px) and (max-width: 900px) {
+                    #memory-container {
+                        grid-template-columns: repeat(3, 1fr);
+                    }  
+                    @media only screen and (min-width: 901px) and (max-width: 1200px) {
+                    #memory-container {
+                        grid-template-columns: repeat(4, 1fr);
+                    }
             </style>
             <h1>Jeu de Memory </h1>
 
@@ -88,7 +100,20 @@ export default class aude extends HTMLElement {
         // Add event listeners
         this.shadowRoot.getElementById("level-buttons").addEventListener("click", (event) => this.handleLevelButtonClick(event));
     }
+ flipCardOnTouch(cardElement) {
+        // Add touchstart event for mobile devices
+        cardElement.addEventListener('touchstart', () => {
+            cardElement.classList.add('flipped');
+            cardElement.innerHTML = this.shuffledSymbols[cardElement.dataset.index];
+            this.selectedCards.push(cardElement);
 
+            if (this.selectedCards.length === 2) {
+                this.moves++;
+                this.counterElement.textContent = `Coups: ${this.moves}`;
+                setTimeout(() => this.checkForMatch(), 500);
+            }
+        });
+    }
     startGame(cardCount) {
         const symbols = ['🎄', '🎅', '🎁', '⛄', '🔔', '❄️', '🦌', '🕯️', '🌟', '🤶'];
         const gameContainer = this.shadowRoot.getElementById('memory-container');
