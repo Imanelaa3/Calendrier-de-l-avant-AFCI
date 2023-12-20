@@ -5,7 +5,7 @@ import Imane from "./Imane/imane.js";
 import Dylan from "./dylan/dylan.js";
 import Dylan2 from "./dylan/dylan2.js";
 import Tim from "./tim/script.js";
-
+import Aude from "./audejeu/quizz.js;
 
 
 
