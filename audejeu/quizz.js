@@ -3,7 +3,8 @@ export default class aude extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
     }
-    const quizzContent='
+    render() {
+        this.shadowRoot.innerHTML = `
     <div id="game-container">
         <h1>Qui veut gagner des millions ?</h1>
         <div id="question"></div>
@@ -62,7 +63,10 @@ export default class aude extends HTMLElement {
             display: none;
         }
 
-        
+        .joker-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
         @media only screen and (max-width: 600px) {
             #game-container {
@@ -91,7 +95,6 @@ export default class aude extends HTMLElement {
     </style>
     
 `;
-this.shadowRoot.innerHTML = quizzContent;
     }
 
     ConnectedCallback() {

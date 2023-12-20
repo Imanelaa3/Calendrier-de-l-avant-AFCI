@@ -36,7 +36,7 @@ const listImport = {
   16: { file: "./harry/gremlinvasion.js", template: "#harry1" },
   17: {file:"./tim2/tim2.js",template:"#tim2"},
   18: "",
-  19:{file:"./audejeu/quizz.js",template:"#aude4"},
+  19:"",
   20: {file:"./audejeu/memory.js",template:"#aude3"},
   21: { file: "./harry/gremlinvasion.js", template: "#harry1" },// a changer si nouvelle animation
   22: { file: "./thomas2/Game2D - POO/script.js", template: "#thomas2" },// a changer si nouvelle animation
