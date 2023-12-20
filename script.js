@@ -10,6 +10,7 @@ import Tim from "./tim/script.js";
 
 
 
+
 //----------------B1------------------
 
 const buttons = document.querySelectorAll("button");
@@ -37,12 +38,12 @@ const listImport = {
   18: "",
   19:{file:"./audejeu/quizz.js",template:"#aude4"},
   20: {file:"./audejeu/memory.js",template:"#aude3"},
-  21: "",
-  22: "",
-  23: "",
-  24: "",
+  21: { file: "./harry/gremlinvasion.js", template: "#harry1" },// a changer si nouvelle animation
+  22: { file: "./thomas2/Game2D - POO/script.js", template: "#thomas2" },// a changer si nouvelle animation
+  23: { file: "./Pierre-Papier-Cisseau-main/script.js", template: "#faissal" },// a changer si nouvelle animation
+  24: {file :"./Imane/AnimImane2.js",template:"#imane2"}, // l'import ne fonctionne pas > a resoudre 
 };
-console.log(listImport);
+
 buttons.forEach((button) => {
   const day = parseInt(button.getAttribute("data-day"));
   const allowedDate = new Date(2023, 11, day);
@@ -53,7 +54,7 @@ buttons.forEach((button) => {
         baliseAnim.style.display === "none" ||
         baliseAnim.style.display === ""
       ) {
-        console.log(listImport, listImport[day], day, listImport[day].template);
+        console.log(listImport[day].template);
         const import1 = await import(listImport[day].file);
         console.log(import1);
         const anim = new import1.default();
