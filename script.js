@@ -35,11 +35,11 @@ const listImport = {
   15: { file: "./casse_briques/game.js", template: "#khalid" },
   16: { file: "./harry/gremlinvasion.js", template: "#harry1" },
   17: {file:"./tim2/tim2.js",template:"#tim2"},
-  18:{file:"./audejeu/quizz.js",template:"#aude4"},
+  18:"",
   19:"",
   20: {file:"./audejeu/memory.js",template:"#aude3"},
   21: { file: "./harry/gremlinvasion.js", template: "#harry1" },// a changer si nouvelle animation
-  22: { file: "./thomas2/Game2D - POO/script.js", template: "#thomas2" },// a changer si nouvelle animation
+  22: {file:"./audejeu/quizz.js",template:"#aude4"},
   23: { file: "./Pierre-Papier-Cisseau-main/script.js", template: "#faissal" },// a changer si nouvelle animation
   24: {file :"./Imane/AnimImane2.js",template:"#imane2"}, // l'import ne fonctionne pas > a resoudre 
 };
