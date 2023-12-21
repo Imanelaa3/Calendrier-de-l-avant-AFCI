@@ -1,105 +1,113 @@
 export default class aude extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
+        this.attachShadow({ mode: 'open' }); // Create a shadow DOM to encapsulate styles
     }
+
+    // Render method to set up the initial structure and styles of the component
     render() {
         this.shadowRoot.innerHTML = `
-    <div id="game-container">
-        <h1>Qui veut gagner des millions ?</h1>
-        <div id="question"></div>
-        <div id="options"></div>
-        <p id="score">Score : <span id="score-value">0</span></p>
-        <div id="countdown"></div>
-            <style>
-        /* Ajoutez ici vos styles CSS */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: red;
-            color: #ffffff;
-        }
-
-        #game-container {
-            text-align: center;
-            background-color: green;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px; 
-            width: 100%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-size: 2em;
-        }
-
-        #question {
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-
-        button {
-            padding: 10px;
-            font-size: 1em;
-            cursor: pointer;
-            margin: 10px;
-            color:#6D071A;
-            background-color: silver;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #score {
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .joker-disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        @media only screen and (max-width: 600px) {
-            #game-container {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-
-            #question {
-                font-size: 1.2em;
-                margin: 10px 0;
-            }
-
-            button {
-                padding: 8px;
-                font-size: 0.9em;
-            }
-
-            #score {
-                font-size: 1em;
-                margin-top: 15px;
-            }
-        }
-    </style>
-    
-`;
+            <div id="game-container">
+                <h1>Quizz de noël ?</h1>
+                <div id="question"></div>
+                <div id="options"></div>
+                <p id="score">Score : <span id="score-value">0</span></p>
+                <div id="countdown"></div>
+                <style>
+                    /* Styles for the custom element */
+                    :host {
+                        margin: 0;
+                        font-family: 'Arial', sans-serif;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                        background-color: red;
+                        color: #ffffff;
+                       
+                    }
+            
+                    #game-container {
+                        text-align: center;
+                        background-color: green;
+                        padding: 20px;
+                        border-radius: 10px;
+                        max-width: 600px; 
+                        width: 100%;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                 }
+            
+                    h1 {
+                        font-size: 2em;
+                    }
+            
+                    #question {
+                        font-size: 1.5em;
+                        margin: 20px 0;
+                    }
+            
+                    button {
+                        padding: 10px;
+                        font-size: 1em;
+                        cursor: pointer;
+                        margin: 10px;
+                        color:#6D071A;
+                        background-color: silver;
+                        border: none;
+                        border-radius: 5px;
+                    }
+            
+                    #score {
+                        font-size: 1.2em;
+                        margin-top: 20px;
+                    }
+            
+                    .hidden {
+                        display: none;
+                    }
+            
+                    @media only screen and (max-width: 600px) {
+                        #game-container {
+                            padding: 10px;
+                        }
+            
+                        h1 {
+                            font-size: 1.5em;
+                        }
+            
+                        #question {
+                            font-size: 1.2em;
+                            margin: 10px 0;
+                        }
+            
+                        button {
+                            padding: 8px;
+                            font-size: 0.9em;
+                        }
+            
+                        #score {
+                            font-size: 1em;
+                            margin-top: 15px;
+                        }
+                    }
+                </style>
+            </div>
+        `;
     }
 
-    ConnectedCallback() {
+    connectedCallback() {
+        // Set the countdown duration and render the initial structure
         const countdownDuration = 60;
+        this.render();
+        const questionContainer = this.shadowRoot.getElementById('question');
+        const optionsContainer = this.shadowRoot.getElementById('options');
+        const scoreValue = this.shadowRoot.getElementById('score-value');
+        const countdownDisplay = this.shadowRoot.getElementById('countdown');
 
+        // Log elements to console for debugging
+        console.log(questionContainer, optionsContainer, scoreValue, countdownDisplay);
+
+        // Define an array of quiz questions
         const questions = [
             {
                 question: 'Quel est le surnom de Santa Claus ?',
@@ -168,46 +176,42 @@ export default class aude extends HTMLElement {
             }
         ];
 
+        // Initialize variables to manage quiz state
         let currentQuestionIndex = 0;
         let score = 0;
         let countdownTimer;
 
-        const questionContainer = document.getElementById('question');
-        const optionsContainer = document.getElementById('options');
-        const scoreValue = document.getElementById('score-value');
-        const countdownDisplay = document.getElementById('countdown');
-
-        function showQuestion() {
+        // Function to display a question and its options
+        const showQuestion = () => {
             resetCountdown();
             const currentQuestion = questions[currentQuestionIndex];
             questionContainer.innerText = currentQuestion.question;
             optionsContainer.innerHTML = '';
 
+            // Create buttons for each option and attach event listeners
             for (let i = 0; i < currentQuestion.options.length; i++) {
                 const optionButton = document.createElement('button');
                 optionButton.innerText = currentQuestion.options[i];
-                optionButton.addEventListener('click', function (event) {
-                    const selectedAnswer = event.target.innerText;
-                    checkAnswer(currentQuestion, selectedAnswer);
-                });
+                optionButton.addEventListener('click', handleButtonClick);
+                optionButton.addEventListener('touchstart', handleButtonClick); // Add touch event
 
                 optionsContainer.appendChild(optionButton);
-
-                // Réactivez l'option
                 optionButton.disabled = false;
             }
-        }
+        };
 
-        function checkAnswer(question, selectedAnswer) {
+        // Function to check the selected answer and update the quiz state
+        const checkAnswer = (question, selectedAnswer) => {
             clearTimeout(countdownTimer);
             if (selectedAnswer === question.correctAnswer) {
                 score++;
                 scoreValue.innerText = score;
                 showFeedback('Bonne réponse ! 🎉', 'gold');
             } else {
-                showFeedback('Mauvaise réponse. 😢 La bonne réponse était : ' + question.correctAnswer, 'silver');
+                showFeedback(`Mauvaise réponse. 😢 La bonne réponse était : ${question.correctAnswer}`, 'silver');
             }
 
+            // Move to the next question or end the game after a delay
             setTimeout(() => {
                 if (currentQuestionIndex < questions.length - 1) {
                     currentQuestionIndex++;
@@ -217,34 +221,40 @@ export default class aude extends HTMLElement {
                     endGame();
                 }
             }, 3000);
-        }
+        };
 
-        function showFeedback(message, color) {
+        // Function to display feedback for the user
+        const showFeedback = (message, color) => {
             const feedback = document.createElement('p');
             feedback.innerText = message;
             feedback.style.color = color;
             optionsContainer.appendChild(feedback);
-        }
+        };
 
-        function hideFeedback() {
+        // Function to hide the feedback
+        const hideFeedback = () => {
             const feedback = optionsContainer.querySelector('p');
             if (feedback) {
                 optionsContainer.removeChild(feedback);
             }
-        }
+        };
 
-        function endGame() {
+        // Function to end the game and display the final score
+        const endGame = () => {
             clearTimeout(countdownTimer);
             alert(`Fin du jeu ! Votre score est de ${score}`);
-        }
+        };
 
-        function startCountdown() {
+        // Function to start the countdown timer
+        const startCountdown = () => {
             let timeLeft = countdownDuration;
 
+            // Update the countdown display every 2 seconds
             countdownTimer = setInterval(() => {
                 countdownDisplay.innerText = `Temps restant : ${timeLeft}s`;
                 timeLeft--;
 
+                // End the game if time runs out
                 if (timeLeft < 0) {
                     clearInterval(countdownTimer);
                     showFeedback('Temps écoulé. 😢', 'red');
@@ -260,16 +270,25 @@ export default class aude extends HTMLElement {
                     }, 2000);
                 }
             }, 2000);
-        }
+        };
 
-        function resetCountdown() {
+        // Function to reset the countdown timer
+        const resetCountdown = () => {
             clearInterval(countdownTimer);
             countdownDisplay.innerText = '';
             startCountdown();
-        }
+        };
 
+        // Event handler for button clicks
+        const handleButtonClick = (event) => {
+            const selectedAnswer = event.target.innerText;
+            checkAnswer(questions[currentQuestionIndex], selectedAnswer);
+        };
+
+        // Call showQuestion after defining the functions
         showQuestion();
     }
 }
 
-customElements.define("balise-animation8", aude)
+// Define the custom element 'balise-animation8'
+customElements.define("balise-animation8", aude);
